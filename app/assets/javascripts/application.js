@@ -17,7 +17,5 @@
 //= require jquery_ujs
 //= require materialize
 
-$(".dropdown-button").dropdown();
-$(document).ready(function() {
-    $('select').material_select();
-  });
+
+

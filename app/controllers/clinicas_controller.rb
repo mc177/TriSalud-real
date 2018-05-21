@@ -15,7 +15,6 @@ class ClinicasController < ApplicationController
   # GET /clinicas/new
   def new
     @clinica = Clinica.new
-    @clinica.user = User.new
   end
 
   # GET /clinicas/1/edit
@@ -73,6 +72,6 @@ class ClinicasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def clinica_params
-      params.require(:clinica).permit(:user_id, :rif, :nombre, :direccion, :estatus, user_attributes: [:email, :password, :password_confirmation, :rol_id])
+      params.require(:clinica).permit(:user_id, :rif, :nombre, :direccion, :estatus)
     end
 end

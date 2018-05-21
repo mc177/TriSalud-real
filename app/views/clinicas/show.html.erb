@@ -9,20 +9,16 @@
   <%#= @clinica.id %>
 </p>
 </-->
-<p>
-  <strong>Nombre:</strong>
-  <%= @clinica.nombre %>
-</p>
+
 <p>
   <strong>Rif:</strong>
   <%= @clinica.rif %>
 </p>
 
-   <%= @clinica.medicos.each do |medico|  %>
-   	<h2> <%= medico.user.email%>
-   	<h3> <%= link_to medico.nombres, medico %> </h3>
-   <%end%>
-
+<p>
+  <strong>Nombre:</strong>
+  <%= @clinica.nombre %>
+</p>
 
 <p>
   <strong>Direccion:</strong>

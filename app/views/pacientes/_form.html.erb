@@ -15,7 +15,6 @@
     </div>
   <% end %>
 
-
   
   <div class="field">
     <%= form.label :cedula %>
@@ -68,38 +67,7 @@
   </div>
 
   <div class="actions ">
-  <%= form.fields_for :user do |f| %>
-    <% sexos = {'Masculino' => 0, 'Femenino' => 1} %>
-      <fieldset>
-        <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :contraseña %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
-
-          </div>
-
-          <div class="field">
-            <%= f.label :confirmar_contraseña %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
-          </div>
-          
-          <% #if not user_signed_in?%>
-            <%= f.hidden_field :rol_id, :value => 2 %>
-          <%#end%>
-
-            <%= f.hidden_field :estatus, :value => "A" %>
-
-          </fieldset> 
-  <%end%>
-
-    <%= form.submit "Guardar", class:"btn btn-primary b" %>
+    <%= form.submit "Guardar", class:"b waves-effect waves-light btn-large" %>
   </div>
 <% end %>
 </div>

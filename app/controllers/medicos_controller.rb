@@ -15,9 +15,6 @@ class MedicosController < ApplicationController
   # GET /medicos/new
   def new
     @medico = Medico.new
-    @medico.user = User.new
-    @especialidades = Especialidad.where(:estatus => "A")
-    @clinicas = Clinica.where(:estatus => "A")
   end
 
   # GET /medicos/1/edit
@@ -28,7 +25,6 @@ class MedicosController < ApplicationController
   # POST /medicos.json
   def create
     @medico = Medico.new(medico_params)
-    @medico.clinicas = params[:clinicas]
     @medico.estatus = "A" 
     respond_to do |format|
       if @medico.save
@@ -59,7 +55,7 @@ class MedicosController < ApplicationController
   # DELETE /medicos/1.json
   def destroy
     @medico = Medico.find(params[:id])
-    @medico.estatus = "I"      
+    @medico.estatus = 'I'      
     @medico.save
     respond_to do |format|
       format.html { redirect_to medicos_url, notice: 'El médico ha sido eliminado exitosamente.' }
@@ -75,6 +71,6 @@ class MedicosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def medico_params
-      params.require(:medico).permit(:user_id, :especialidad_id, :nombres, :apellidos, :direccion, :telefono, :edad, :sexo, :estatus, :clinicas, user_attributes: [:email, :password, :password_confirmation, :rol_id])
+      params.require(:medico).permit(:user_id, :especialidad_id, :nombres, :apellidos, :direccion, :telefono, :edad, :sexo, :estatus)
     end
 end

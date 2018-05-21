@@ -30,64 +30,70 @@
           <%end%>
 
             <%= f.hidden_field :estatus, :value => "A" %>
-            <%= f.fields_for :pacientes do |form| %>  
-              <div>
-                  <% sexos = {'Masculino' => 0, 'Femenino' => 1} %>
-                  <fieldset>              
-                      <div class="field">
-                          <%= form.label :cedula %>
-                          <%= form.text_field :ced_paciente, id: :paciente_ced_paciente, class:"form-control"  %>
-                        </div>
-
-                        <div class="field">
-                          <%= form.label :nombres %>
-                          <%= form.text_field :nombres, id: :paciente_nombres, class:"form-control"  %>
-                        </div>
-
-                        <div class="field">
-                          <%= form.label :apellidos %>
-                          <%= form.text_field :apellidos, id: :paciente_apellidos, class:"form-control"  %>
-                        </div>
-
-                        <div class="field">
-                          <%= form.label :nombres_responsable %>
-                          <%= form.text_field :nombres_responsable, id: :paciente_nombres_responsable, class:"form-control"  %>
-                        </div>
-
-                        <div class="field">
-                          <%= form.label :apellidos_responsable %>
-                          <%= form.text_field :apellidos_responsable, id: :paciente_apellidos_responsable, class:"form-control"  %>
-                        </div>
-
-                        <div class="field">
-                          <%= form.label :telefono_responsable %>
-                          <%= form.text_field :telefono_responsable, id: :paciente_telefono_responsable , class:"form-control" %>
-                        </div>
-
-                        <div class="field">
-                          <%= form.label :direccion %>
-                          <%= form.text_field :direccion, id: :paciente_direccion, class:"form-control"  %>
-                        </div>
-
-                        <div class="field">
-                          <%= form.label :telefono %>
-                          <%= form.text_field :telefono, id: :paciente_telefono, class:"form-control"  %>
-                        </div>
-
-                        <div class="field">
-                          <%= form.label :edad %>
-                          <%= form.text_field :edad, id: :paciente_edad, class:"form-control"  %>
-                        </div>
-
-                      <% lista = sexos.sort %>
-                      <% lista.each do |sexo| %>
-                      <%= form.radio_button :sexo, sexo[1] %>
-                      <label for ="<%= sexo[1]%>"><%= sexo[0] %></label>
-                      <%end%>
-                  </fieldset>    
+         
+          <%#= f.fields_for :pacientes do |p| %>
+              <div class="field">
+                <%#= p.label :user_id %>
+                <%#= p.text_field :user_id, id: :paciente_user_id, class:"form-control"  %>
               </div>
-            <%end%> 
-          
+
+              <div class="field">
+                <%#= p.label :cedula %>
+                <%#= p.text_field :ced_paciente, id: :paciente_ced_paciente, class:"form-control"  %>
+              </div>
+
+              <div class="field">
+                <%#= p.label :nombres %>
+                <%#= p.text_field :nombres, id: :paciente_nombres, class:"form-control"  %>
+              </div>
+
+              <div class="field">
+                <%#= p.label :apellidos %>
+                <%#= p.text_field :apellidos, id: :paciente_apellidos, class:"form-control"  %>
+              </div>
+
+              <div class="field">
+                <%#= p.label :nombres_responsable %>
+                <%#= p.text_field :nombres_responsable, id: :paciente_nombres_responsable, class:"form-control"  %>
+              </div>
+
+              <div class="field">
+                <%#= p.label :apellidos_responsable %>
+                <%#= p.text_field :apellidos_responsable, id: :paciente_apellidos_responsable, class:"form-control"  %>
+              </div>
+
+              <div class="field">
+                <%#= p.label :telefono_responsable %>
+                <%#= p.text_field :telefono_responsable, id: :paciente_telefono_responsable , class:"form-control" %>
+              </div>
+
+              <div class="field">
+                <%#= p.label :direccion %>
+                <%#= p.text_field :direccion, id: :paciente_direccion, class:"form-control"  %>
+              </div>
+
+              <div class="field">
+                <%#= p.label :telefono %>
+                <%#= p.text_field :telefono, id: :paciente_telefono, class:"form-control"  %>
+              </div>
+
+              <div class="field">
+                <%#= p.label :edad %>
+                <%#= p.text_field :edad, id: :paciente_edad, class:"form-control"  %>
+              </div>
+
+              <div class="field">
+                <%#= p.label :sexo %>
+                <%#= p.text_field :sexo, id: :paciente_sexo, class:"form-control"  %>
+              </div>
+
+              <div class="field">
+                <%#= p.label :estatus %>
+                <%#= p.text_field :estatus, id: :paciente_estatus %>
+              </div>
+
+                  
+              <%# end %>
           <div class="actions">
             <%= f.submit "Registrarse", class:"btn btn-primary" %>
           </div>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :servicios
   resources :historial_pacientes
   resources :plan_quirurgicos
   resources :medicos

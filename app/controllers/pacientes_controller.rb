@@ -5,7 +5,6 @@ class PacientesController < ApplicationController
   # GET /pacientes.json
   def index
     @pacientes = Paciente.where(:estatus => "A")
-
   end
 
   # GET /pacientes/1
@@ -16,7 +15,6 @@ class PacientesController < ApplicationController
   # GET /pacientes/new
   def new
     @paciente = Paciente.new
-    @paciente.user = User.new
   end
 
   # GET /pacientes/1/edit
@@ -73,6 +71,6 @@ class PacientesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def paciente_params
-      params.require(:paciente).permit(:user_id, :ced_paciente, :nombres, :apellidos, :nombres_responsable, :apellidos_responsable, :telefono_responsable, :direccion, :telefono, :edad, :sexo, :estatus, user_attributes: [:email, :password, :password_confirmation, :rol_id])
+      params.require(:paciente).permit(:user_id, :ced_paciente, :nombres, :apellidos, :nombres_responsable, :apellidos_responsable, :telefono_responsable, :direccion, :telefono, :edad, :sexo, :estatus)
     end
 end

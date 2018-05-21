@@ -30,38 +30,12 @@
     <%= form.label :direccion %>
     <%= form.text_field :direccion, id: :clinica_direccion,class:"form-control"  %>
   </div>
-  <%= form.fields_for :user do |f| %>
-    <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :contraseña %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
-
-          </div>
-
-          <div class="field">
-            <%= f.label :confirmar_contraseña %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
-          </div>
-          
-          <% #if not user_signed_in?%>
-            <%= f.hidden_field :rol_id, :value => 4 %>
-          <%#end%>
-
-            <%= f.hidden_field :estatus, :value => "A" %>
-  <%end%>
   
 
   <div class="actions">
-    <%= form.submit "Guardar", class:"btn btn-primary b" %>
+    <%= form.submit "Guardar", class:" b waves-effect waves-light btn-large" %>
   </div>
-<% end %>
+<% end %> 
 </div>
 </div>
 </div>

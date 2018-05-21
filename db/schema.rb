@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180520201804) do
+ActiveRecord::Schema.define(version: 20180502153438) do
 
   create_table "clinicas", force: :cascade do |t|
     t.integer "user_id"
@@ -48,15 +48,6 @@ ActiveRecord::Schema.define(version: 20180520201804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["paciente_id"], name: "index_historial_pacientes_on_paciente_id"
-  end
-
-  create_table "medicoen_clinicas", force: :cascade do |t|
-    t.integer "clinica_id"
-    t.integer "medico_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["clinica_id"], name: "index_medicoen_clinicas_on_clinica_id"
-    t.index ["medico_id"], name: "index_medicoen_clinicas_on_medico_id"
   end
 
   create_table "medicos", force: :cascade do |t|
@@ -116,23 +107,6 @@ ActiveRecord::Schema.define(version: 20180520201804) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "servicio_seleccionados", force: :cascade do |t|
-    t.integer "servicio_id"
-    t.integer "plan_quirurgico_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["plan_quirurgico_id"], name: "index_servicio_seleccionados_on_plan_quirurgico_id"
-    t.index ["servicio_id"], name: "index_servicio_seleccionados_on_servicio_id"
-  end
-
-  create_table "servicios", force: :cascade do |t|
-    t.float "costo"
-    t.string "descripcion", limit: 255, null: false
-    t.string "estatus", limit: 1, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -145,12 +119,10 @@ ActiveRecord::Schema.define(version: 20180520201804) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.integer "rol_id", null: false
-    t.integer "paciente_id"
     t.string "estatus"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["paciente_id"], name: "index_users_on_paciente_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

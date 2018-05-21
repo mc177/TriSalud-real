@@ -73,6 +73,7 @@
   flex: 0 0 auto;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
+   max-width: 76%;
 }
 
 .col-xs {
@@ -129,7 +130,7 @@
 .col-xs-8 {
   -ms-flex-preferred-size: 66.66666667%;
   flex-basis: 66.66666667%;
-  max-width: 66.66666667%;
+ /* max-width: 66.66666667%;*/
 }
 
 .col-xs-9 {
@@ -543,6 +544,7 @@
     -ms-flex-preferred-size: 0;
     flex-basis: 0;
     max-width: 100%;
+    margin-left: -250px;
   }
 
   .col-md-1 {
@@ -576,9 +578,14 @@
   }
 
   .col-md-6 {
-    -ms-flex-preferred-size: 50%;
+  -ms-flex-preferred-size: 50%;
     flex-basis: 50%;
-    max-width: 50%;
+    /*max-width: 50%;*/
+    background-color: #399c9c33;
+    margin-top: 110px;
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+    width: 1140px;
   }
 
   .col-md-7 {
