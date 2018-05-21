@@ -1,0 +1,67 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+
+
+<%= form_with(model: clinica, local: true) do |form| %>
+  <% if clinica.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(clinica.errors.count, "error") %> prohibited this clinica from being saved:</h2>
+
+      <ul>
+      <% clinica.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= form.label :rif %>
+    <%= form.text_field :rif, id: :clinica_rif, class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre, id: :clinica_nombre, class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :direccion %>
+    <%= form.text_field :direccion, id: :clinica_direccion,class:"form-control"  %>
+  </div>
+  <%= form.fields_for :user do |f| %>
+    <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :contraseña %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
+
+          </div>
+
+          <div class="field">
+            <%= f.label :confirmar_contraseña %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
+          </div>
+          
+          <% #if not user_signed_in?%>
+            <%= f.hidden_field :rol_id, :value => 4 %>
+          <%#end%>
+
+            <%= f.hidden_field :estatus, :value => "A" %>
+  <%end%>
+  
+
+  <div class="actions">
+    <%= form.submit "Guardar", class:"btn btn-primary b" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>

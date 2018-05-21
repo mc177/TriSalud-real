@@ -1,0 +1,43 @@
+<div class="row ">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+<p id="notice"><%= notice %></p>
+
+<h1 class="right"  >Lista de Planes Quirúrgicos</h1>
+
+<table  width="203%" border="1" cellpadding="0" cellspacing="0" bordercolor="#2f4f4f">
+  <thead>
+    <tr>
+      <th height="10%" width="10%">Medico</th>
+      <th height="10%" width="10%">Paciente</th>
+      <th height="10%" width="10%">Fecha consulta</th>
+      <th height="10%" width="10%">Descp consulta</th>
+      <th height="10%" width="10%">Fecha pq</th>
+      <th height="10%" width="10%">Presupuesto</th>      
+      <th height="10%" width="10%">Estatus</th>    
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plan_quirurgicos.each do |plan_quirurgico| %>
+      <tr>
+        <td><%#= plan_quirurgico.medico %></td>
+        <td><%#= plan_quirurgico.paciente %></td>
+        <td height="10%" width="10%"><%= plan_quirurgico.fecha_consulta %></td>
+        <td height="10%" width="10%"><%= plan_quirurgico.descp_consulta %></td>
+        <td height="10%" width="10%"><%= plan_quirurgico.fecha_pq %></td>
+        <td height="10%" width="10%"><%= plan_quirurgico.presupuesto %></td> 
+        <td height="10%" width="10%"><%= plan_quirurgico.estatus %></td>      
+        <td height="10%" width="10%"><%= link_to 'Ver', plan_quirurgico %></td>
+        <td height="10%" width="10%"><%= link_to 'Modificar', edit_plan_quirurgico_path(plan_quirurgico) %></td>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Planificar un nuevo Plan Quirurgico', new_plan_quirurgico_path %>
+</div>
+</div>
+</div>

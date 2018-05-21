@@ -1,0 +1,148 @@
+.color{
+	background-color: rgb(47, 79, 79);
+}
+.pull-left {
+    float: left !important;
+}
+.white{
+	color: white;
+}
+
+.large-padding{
+	padding: 10px 5px;
+}
+
+.line-hight{
+  line-height: 0px;
+}
+
+.list-style{
+	list-style: none;
+  top: 65px;
+}
+
+.text-left{
+	text-align: left;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.form-control{
+	border: none;
+	border-bottom: 1px solid;
+	outline: none;
+	width: 100%;
+	display: block;
+	padding: 10px 0px;
+	font-size: 1.2em;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #2f4f4f;
+    border-color: #2f4f4f;
+}
+.button{
+  border: 0;
+  background: white;
+  color: darkgreen;
+  width: 300px;
+  height: 30px;
+  position: center;  
+}
+html,body{
+	margin: 0px;
+	font-family: 'Oswald', sans-serif;
+  height:100%;
+  overflow-x:hidden;  
+  background-color:#FFFFFF;
+  margin:0;
+  line-height:16px;
+  
+}
+
+a,a:visited{
+	color: inherit !important;
+	text-decoration: none;
+}
+ .b:hover{
+ 	color: black;
+ }
+
+ #b:active{
+ 	color:white;
+ }
+
+ .c:hover{
+ 	color: black;
+ }
+
+ #c:active{
+ 	color:white;
+ }
+
+ .d:hover{
+ 	color: black;
+ }
+
+ #d:active{
+ 	color:white;
+ }
+
+ .e:hover{
+ 	color: black;
+ }
+
+ #e:active{
+ 	color:white;
+ }
+
+ .f:hover{
+ 	color: black;
+ }
+
+ #f:active{
+ 	color:white;
+ }
+ .alert {
+   font-weight: bold;
+   -moz-border-radius: 4px 4px 4px 4px;
+   -webkit-border-radius: 4px 4px 4px 4px;
+   border-radius: 4px 4px 4px 4px;
+   margin-bottom: 18px;
+   padding: 12px 25px 12px 24px;
+   -moz-box-shadow: 3px 3px 1px 1px #CCCCCC;
+   -webkit-box-shadow: 3px 3px 1px 1px #CCCCCC;
+   box-shadow: 3px 3px 1px 1px #CCCCCC;
+}
+
+.right{
+  float: right;
+}
+
+
+element.style {
+    width: 145.641px;
+    position: absolute;
+    left: 1195.86px;
+    opacity: 1;
+    display: block;
+    top: 65px;
+}

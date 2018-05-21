@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  servicio: one
+  plan_quirurgico: one
+
+two:
+  servicio: two
+  plan_quirurgico: two

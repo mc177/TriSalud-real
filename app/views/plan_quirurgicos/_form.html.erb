@@ -1,0 +1,68 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+<%= form_with(model: plan_quirurgico, local: true, multipart: true) do |form| %>
+<%#= form_for @plan_quirurgico, url: new_plan_quirurgico_path do |form| %>  
+  <% if plan_quirurgico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plan_quirurgico.errors.count, "error") %> prohibited this plan_quirurgico from being saved:</h2>
+
+      <ul>
+      <% plan_quirurgico.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :médico_id %>
+    <%= form.text_field :medico_id, id: :plan_quirurgico_medico_id, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :paciente_id %>
+    <%= form.text_field :paciente_id, id: :plan_quirurgico_paciente_id,class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_consulta %>
+    <%= form.date_select :fecha_consulta, id: :plan_quirurgico_fecha_consulta, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descp_consulta %>
+    <%= form.text_field :descp_consulta, id: :plan_quirurgico_descp_consulta, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_del_plan_quirúrgico %>
+    <%= form.date_select :fecha_pq, id: :plan_quirurgico_fecha_pq, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :presupuesto %>
+    <%= form.text_field :presupuesto, id: :plan_quirurgico_presupuesto, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :exámen %>
+     <%= form.file_field :examen , id: :plan_quirurgico_examen %>
+  </div>
+  <div class="field">
+    <label> Servicios</label>
+    <% @servicios.each do |servicio| %>
+      <div class="field">
+        <%= check_box_tag "servicios[]", servicio.id %> <%= servicio.descripcion%>
+      </div>
+    <% end%>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit "Guardar", class:"btn btn-primary b" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>

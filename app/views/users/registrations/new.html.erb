@@ -1,0 +1,99 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+    <div class="box">
+        <h2>Registrarse</h2>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :contraseña %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
+
+          </div>
+
+          <div class="field">
+            <%= f.label :confirmar_contraseña %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
+          </div>
+          
+          <% if not user_signed_in?%>
+            <%= f.hidden_field :rol_id, :value => 2 %>
+          <%end%>
+
+            <%= f.hidden_field :estatus, :value => "A" %>
+            <%= f.fields_for :pacientes do |form| %>  
+              <div>
+                  <% sexos = {'Masculino' => 0, 'Femenino' => 1} %>
+                  <fieldset>              
+                      <div class="field">
+                          <%= form.label :cedula %>
+                          <%= form.text_field :ced_paciente, id: :paciente_ced_paciente, class:"form-control"  %>
+                        </div>
+
+                        <div class="field">
+                          <%= form.label :nombres %>
+                          <%= form.text_field :nombres, id: :paciente_nombres, class:"form-control"  %>
+                        </div>
+
+                        <div class="field">
+                          <%= form.label :apellidos %>
+                          <%= form.text_field :apellidos, id: :paciente_apellidos, class:"form-control"  %>
+                        </div>
+
+                        <div class="field">
+                          <%= form.label :nombres_responsable %>
+                          <%= form.text_field :nombres_responsable, id: :paciente_nombres_responsable, class:"form-control"  %>
+                        </div>
+
+                        <div class="field">
+                          <%= form.label :apellidos_responsable %>
+                          <%= form.text_field :apellidos_responsable, id: :paciente_apellidos_responsable, class:"form-control"  %>
+                        </div>
+
+                        <div class="field">
+                          <%= form.label :telefono_responsable %>
+                          <%= form.text_field :telefono_responsable, id: :paciente_telefono_responsable , class:"form-control" %>
+                        </div>
+
+                        <div class="field">
+                          <%= form.label :direccion %>
+                          <%= form.text_field :direccion, id: :paciente_direccion, class:"form-control"  %>
+                        </div>
+
+                        <div class="field">
+                          <%= form.label :telefono %>
+                          <%= form.text_field :telefono, id: :paciente_telefono, class:"form-control"  %>
+                        </div>
+
+                        <div class="field">
+                          <%= form.label :edad %>
+                          <%= form.text_field :edad, id: :paciente_edad, class:"form-control"  %>
+                        </div>
+
+                      <% lista = sexos.sort %>
+                      <% lista.each do |sexo| %>
+                      <%= form.radio_button :sexo, sexo[1] %>
+                      <label for ="<%= sexo[1]%>"><%= sexo[0] %></label>
+                      <%end%>
+                  </fieldset>    
+              </div>
+            <%end%> 
+          
+          <div class="actions">
+            <%= f.submit "Registrarse", class:"btn btn-primary" %>
+          </div>
+        <% end %>
+
+<%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>

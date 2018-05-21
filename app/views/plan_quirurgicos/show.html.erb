@@ -1,0 +1,49 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Medico:</strong>
+  <%#= @plan_quirurgico.medico %>
+</p>
+
+<p>
+  <strong>Paciente:</strong>
+  <%#= @plan_quirurgico.paciente %>
+</p>
+
+<p>
+  <strong>Fecha consulta:</strong>
+  <%= @plan_quirurgico.fecha_consulta %>
+</p>
+
+<p>
+  <strong>Descripción consulta:</strong>
+  <%= @plan_quirurgico.descp_consulta %>
+</p>
+
+<p>
+  <strong>Fecha Plan Quirurgico:</strong>
+  <%= @plan_quirurgico.fecha_pq %>
+</p>
+
+<p>
+  <strong>Presupuesto:</strong>
+  <%= @plan_quirurgico.presupuesto %>
+</p>
+
+<p>
+<%= image_tag(@plan_quirurgico.examen_url, :width => 65, :height => 75) %> 
+</p>
+
+<p>
+  <strong>Estatus:</strong>
+  <%= @plan_quirurgico.estatus %>
+</p>
+
+<%= link_to 'Editar', edit_plan_quirurgico_path(@plan_quirurgico) %> |
+<%= link_to 'Regresar', plan_quirurgicos_path %>
+</div>
+</div>
+</div>

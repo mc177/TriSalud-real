@@ -1,0 +1,97 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+
+<%= form_with(model: medico, local: true) do |form| %>
+  <% if medico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(medico.errors.count, "error") %> prohibited this medico from being saved:</h2>
+
+      <ul>
+      <% medico.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= form.label :especialidad_id %>
+    
+    <%=collection_select(:medico, :especialidad_id, @especialidades, :id, :descripcion, prompt: true)%>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombres %>
+    <%= form.text_field :nombres, id: :medico_nombres, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellidos %>
+    <%= form.text_field :apellidos, id: :medico_apellidos, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :direccion %>
+    <%= form.text_field :direccion, id: :medico_direccion, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefono %>
+    <%= form.text_field :telefono, id: :medico_telefono, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :edad %>
+    <%= form.text_field :edad, id: :medico_edad, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sexo %>
+    <%= form.text_field :sexo, id: :medico_sexo, class:"form-control" %>
+  </div>
+  <div class="field">
+    <label> Clinicas</label>
+    <% @clinicas.each do |clinica| %>
+      <div class="field">
+        <%= check_box_tag "clinicas[]", clinica.id %> <%= clinica.nombre%>
+      </div>
+    <% end%>
+  </div>
+
+
+
+  <%= form.fields_for :user do |f| %>
+    <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :contraseña %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
+
+          </div>
+
+          <div class="field">
+            <%= f.label :confirmar_contraseña %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
+          </div>
+          
+          <% #if not user_signed_in?%>
+            <%= f.hidden_field :rol_id, :value => 3 %>
+          <%#end%>
+
+            <%= f.hidden_field :estatus, :value => "A" %>
+  <%end%>
+  <div class="actions">
+   <%= form.submit "Guardar", class:"btn btn-primary b" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>

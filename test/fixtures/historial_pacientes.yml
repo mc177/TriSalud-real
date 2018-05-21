@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  paciente: one
+  prob_cardio: false
+  prob_respira: false
+  diabetes: false
+  alergias: false
+  diab_pm: MyString
+  sobrepso_pm: MyString
+  hipertension_pm: MyString
+  epilepsia_pm: MyString
+  alcohol: false
+  deportes: false
+  tabaco: false
+  drogas: false
+  estatus: MyString
+
+two:
+  paciente: two
+  prob_cardio: false
+  prob_respira: false
+  diabetes: false
+  alergias: false
+  diab_pm: MyString
+  sobrepso_pm: MyString
+  hipertension_pm: MyString
+  epilepsia_pm: MyString
+  alcohol: false
+  deportes: false
+  tabaco: false
+  drogas: false
+  estatus: MyString

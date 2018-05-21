@@ -1,0 +1,51 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+
+<p id="notice"><%= notice %></p>
+
+<!--><p>
+  
+  <%#= @medico.id%>
+</p>
+</-->
+<p>
+  <strong>Especialidad:</strong>
+  <%#= @medico.especialidad %>
+</p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @medico.nombres %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @medico.apellidos %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @medico.direccion %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @medico.telefono %>
+</p>
+
+<p>
+  <strong>Edad:</strong>
+  <%= @medico.edad %>
+</p>
+
+<p>
+  <strong>Sexo:</strong>
+  <%= @medico.sexo %>
+</p>
+
+<%= link_to 'Editar', edit_medico_path(@medico) %> |
+<%= link_to 'Regresar', medicos_path %>
+</div>
+</div>
+</div>

@@ -1,0 +1,107 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+
+<%= form_with(model: paciente, local: true) do |form| %>
+  <% if paciente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(paciente.errors.count, "error") %> prohibited this paciente from being saved:</h2>
+
+      <ul>
+      <% paciente.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  
+  <div class="field">
+    <%= form.label :cedula %>
+    <%= form.text_field :ced_paciente, id: :paciente_ced_paciente, class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombres %>
+    <%= form.text_field :nombres, id: :paciente_nombres, class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellidos %>
+    <%= form.text_field :apellidos, id: :paciente_apellidos, class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombres_responsable %>
+    <%= form.text_field :nombres_responsable, id: :paciente_nombres_responsable, class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellidos_responsable %>
+    <%= form.text_field :apellidos_responsable, id: :paciente_apellidos_responsable, class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefono_responsable %>
+    <%= form.text_field :telefono_responsable, id: :paciente_telefono_responsable , class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :direccion %>
+    <%= form.text_field :direccion, id: :paciente_direccion, class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefono %>
+    <%= form.text_field :telefono, id: :paciente_telefono, class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :edad %>
+    <%= form.text_field :edad, id: :paciente_edad, class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sexo %>
+    <%= form.text_field :sexo, id: :paciente_sexo, class:"form-control"  %>
+  </div>
+
+  <div class="actions ">
+  <%= form.fields_for :user do |f| %>
+    <% sexos = {'Masculino' => 0, 'Femenino' => 1} %>
+      <fieldset>
+        <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :contraseña %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
+
+          </div>
+
+          <div class="field">
+            <%= f.label :confirmar_contraseña %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
+          </div>
+          
+          <% #if not user_signed_in?%>
+            <%= f.hidden_field :rol_id, :value => 2 %>
+          <%#end%>
+
+            <%= f.hidden_field :estatus, :value => "A" %>
+
+          </fieldset> 
+  <%end%>
+
+    <%= form.submit "Guardar", class:"btn btn-primary b" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>

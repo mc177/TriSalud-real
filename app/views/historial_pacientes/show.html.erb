@@ -1,0 +1,81 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @historial_paciente.id %>
+</p>
+
+<p>
+  <strong>Prob cardio:</strong>
+  <%= @historial_paciente.prob_cardio %>
+</p>
+
+<p>
+  <strong>Prob respira:</strong>
+  <%= @historial_paciente.prob_respira %>
+</p>
+
+<p>
+  <strong>Diabetes:</strong>
+  <%= @historial_paciente.diabetes %>
+</p>
+
+<p>
+  <strong>Alergias:</strong>
+  <%= @historial_paciente.alergias %>
+</p>
+
+<p>
+  <strong>Diab pm:</strong>
+  <%= @historial_paciente.diab_pm %>
+</p>
+
+<p>
+  <strong>Sobrepso pm:</strong>
+  <%= @historial_paciente.sobrepso_pm %>
+</p>
+
+<p>
+  <strong>Hipertension pm:</strong>
+  <%= @historial_paciente.hipertension_pm %>
+</p>
+
+<p>
+  <strong>Epilepsia pm:</strong>
+  <%= @historial_paciente.epilepsia_pm %>
+</p>
+
+<p>
+  <strong>Alcohol:</strong>
+  <%= @historial_paciente.alcohol %>
+</p>
+
+<p>
+  <strong>Deportes:</strong>
+  <%= @historial_paciente.deportes %>
+</p>
+
+<p>
+  <strong>Tabaco:</strong>
+  <%= @historial_paciente.tabaco %>
+</p>
+
+<p>
+  <strong>Drogas:</strong>
+  <%= @historial_paciente.drogas %>
+</p>
+
+<p>
+  <strong>Estatus:</strong>
+  <%= @historial_paciente.estatus %>
+</p>
+
+<%= link_to 'Editar', edit_historial_paciente_path(@historial_paciente) %> |
+<%= link_to 'Regresar', historial_pacientes_path %>
+</div>
+</div>
+</div>

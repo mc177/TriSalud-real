@@ -1,0 +1,90 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+
+<%= form_with(model: historial_paciente, local: true) do |form| %>
+  <% if historial_paciente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(historial_paciente.errors.count, "error") %> prohibited this historial_paciente from being saved:</h2>
+
+      <ul>
+      <% historial_paciente.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :paciente_id %>
+    <%= form.text_field :paciente_id, id: :historial_paciente_paciente_id,  class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prob_cardio %>
+    <%= form.check_box :prob_cardio, id: :historial_paciente_prob_cardio,  class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prob_respira %>
+    <%= form.check_box :prob_respira, id: :historial_paciente_prob_respira,  class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :diabetes %>
+    <%= form.check_box :diabetes, id: :historial_paciente_diabetes,  class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alergias %>
+    <%= form.check_box :alergias, id: :historial_paciente_alergias,  class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :diab_pm %>
+    <%= form.text_field :diab_pm, id: :historial_paciente_diab_pm,  class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sobrepso_pm %>
+    <%= form.text_field :sobrepso_pm, id: :historial_paciente_sobrepso_pm,  class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hipertension_pm %>
+    <%= form.text_field :hipertension_pm, id: :historial_paciente_hipertension_pm,  class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :epilepsia_pm %>
+    <%= form.text_field :epilepsia_pm, id: :historial_paciente_epilepsia_pm,  class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alcohol %>
+    <%= form.check_box :alcohol, id: :historial_paciente_alcohol,  class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deportes %>
+    <%= form.check_box :deportes, id: :historial_paciente_deportes,  class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tabaco %>
+    <%= form.check_box :tabaco, id: :historial_paciente_tabaco,  class:"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :drogas %>
+    <%= form.check_box :drogas, id: :historial_paciente_drogas,  class:"form-control"  %>
+  </div>
+  
+
+  <div class="actions">
+   <%= form.submit "Guardar", class:"btn btn-primary b" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>

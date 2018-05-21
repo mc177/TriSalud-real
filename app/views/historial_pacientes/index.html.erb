@@ -1,0 +1,60 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listado Historial de Pacientes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Paciente</th>
+      <th>Prob cardio</th>
+      <th>Prob respira</th>
+      <th>Diabetes</th>
+      <th>Alergias</th>
+      <th>Diab pm</th>
+      <th>Sobrepso pm</th>
+      <th>Hipertension pm</th>
+      <th>Epilepsia pm</th>
+      <th>Alcohol</th>
+      <th>Deportes</th>
+      <th>Tabaco</th>
+      <th>Drogas</th>
+      <th>Estatus</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @historial_pacientes.each do |historial_paciente| %>
+      <tr>
+        <td><%= historial_paciente.id %></td>
+        <td><%= historial_paciente.prob_cardio %></td>
+        <td><%= historial_paciente.prob_respira %></td>
+        <td><%= historial_paciente.diabetes %></td>
+        <td><%= historial_paciente.alergias %></td>
+        <td><%= historial_paciente.diab_pm %></td>
+        <td><%= historial_paciente.sobrepso_pm %></td>
+        <td><%= historial_paciente.hipertension_pm %></td>
+        <td><%= historial_paciente.epilepsia_pm %></td>
+        <td><%= historial_paciente.alcohol %></td>
+        <td><%= historial_paciente.deportes %></td>
+        <td><%= historial_paciente.tabaco %></td>
+        <td><%= historial_paciente.drogas %></td>
+        <td><%= historial_paciente.estatus %></td>
+        <td><%= link_to 'Ver', historial_paciente %></td>
+        <td><%= link_to 'Modificar', edit_historial_paciente_path(historial_paciente) %></td>
+        <td><%= link_to 'Eliminar', historial_paciente, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'Registrar nuevo Historial de Paciente', new_historial_paciente_path %>
+</div>
+</div>
+</div>

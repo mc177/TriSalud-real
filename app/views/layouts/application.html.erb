@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TriSalud</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track'=>true %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track'=>true %>
+    
+  </head>
+
+  <body>
+  
+	  <header>
+	  	<ul id="dropdown1" class="dropdown-content no-list row center-xs list-style" style="top: 65px;" >
+		  <li class="col-md b" id="b"><a href="#!">one</a></li>
+		  <li><a href="#!">two</a></li>
+		  <li class="divider"></li>
+		  <li><a href="#!">three</a></li>
+		</ul>
+		<nav class="color ">
+		  <div class="nav-wrapper">
+		    <a href="#!" class="brand-logo text-left"> TRISALUD, C.A </a>
+		    <ul class="right hide-on-med-and-down ">
+		      <li><a href="sass.html">Sass</a></li>
+		      <li><a href="badges.html">Components</a></li>
+		      <!-- Dropdown Trigger -->
+		      <li class="col-md b" id="b"><a class="dropdown-button line-height" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+		    </ul>
+		  </div>
+		</nav>
+
+	  <% 
+	  #Validar si el usuario inició sesión
+	  if user_signed_in?%>
+		  <% 
+		  #si el usuario actual es administrador
+		  if current_user.rol_id == 1 %>
+
+		  	<nav class="color large-padding " >
+		 		<ul class = "no-list row center-xs list-style ">
+			 		<li class="col-md b" id="b">
+			 		<%= link_to "TriSalud, C.A", root_path, {:class => "item-menu"}%>
+			 			<img src="">	
+			 		</li>
+		  			<li class="col-md b" id="b" >
+		  				<%= link_to "Inicio", root_path, {:class => "item-menu"}%>
+		  			</li>
+
+
+		  			<li class="col-md b" id="b" >
+		  				<%= link_to "Gestionar paciente", root_path, {:class => "item-menu"}%>
+		  			</li>
+		  			<li class="col-md b" id="b" >
+		  				<%= link_to "Gestionar clínica", root_path, {:class => "item-menu"}%>
+		  			</li>
+		  			<li class="col-md b" id="b" >
+		  				<%= link_to "Gestionar especialista", root_path, {:class => "item-menu"}%>
+		  			</li>
+		  			<li class="col-md b" id="b" >
+		  				<%= link_to "Gestionar especialidad", root_path, {:class => "item-menu"}%>
+		  			</li>
+		  			<li class="col-md b" id="b" >
+		  				<%= link_to "Reportes", root_path, {:class => "item-menu"}%>
+		  			</li>
+		  			<li class="col-md b" id="b">
+			  				<%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>	  				
+			  		</li>
+		 		</ul>	
+		  	</nav>
+		 <% else %>
+			   <% #suario de tipo PACIENTE
+			   if current_user.rol_id == 2%>
+				  <nav class="color large-padding " >
+				 		<ul class = "no-list row center-xs list-style ">
+
+					 		<li class="col-md">
+					 			<img src="app/assets/images/image.jpg ">	TriSalud, C.A
+					 		</li>
+				  			<li class="col-md b" id="b" >
+				  				<%= link_to "Inicio", root_path, {:class => "item-menu"}%>
+				  			</li>
+				  			<li class="col-md b" id="b" >
+				  				<%= link_to "Planificar cirugia", root_path, {:class => "item-menu"}%>
+				  			</li>
+				  			<li class="col-md b" id="b" >
+				  				<%= link_to "Consultar plan quirurgico", root_path, {:class => "item-menu"}%>
+				  			</li>	
+				  			<li class="col-md b" id="b" >
+				  				<%= link_to "Ver perfil", root_path, {:class => "item-menu"}%>
+				  			</li>
+				  					  			
+				  			<li class="col-md b" id="b">
+					  				<%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>	  				
+					  		</li>
+				 		</ul>	
+				  	</nav>
+			   <% else %>
+				   <% #Usuario de tipo Medico
+				   if current_user.rol_id == 3 %>
+					  <nav class="color large-padding " >
+					 		<ul class = "no-list row center-xs list-style ">
+						 		<li class="col-md">
+						 			<img src="C:\Users\usuario\Pictures\logo ucla.jpg">	TriSalud, C.A
+						 		</li>
+					  			<li class="col-md b" id="b" >
+					  				<%= link_to "Inicio", root_path, {:class => "item-menu"}%>
+					  			</li>
+					  			<li class="col-md b" id="b" >
+					  				<%= link_to "Ver historial", root_path, {:class => "item-menu"}%>
+					  			</li>
+					  			<li class="col-md b" id="b" >
+					  				<%= link_to "Consultar plan quirurgico", root_path, {:class => "item-menu"}%>
+					  			</li>	
+					  			<li class="col-md b" id="b" >
+					  				<%= link_to "Cirugías pendientes", root_path, {:class => "item-menu"}%>
+					  			</li>
+					  			<li class="col-md b" id="b" >
+					  				<%= link_to "Ver perfil", root_path, {:class => "item-menu"}%>
+					  			</li>			  			
+					  			<li class="col-md b" id="b">
+						  				<%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>	  				
+						  		</li>
+					 		</ul>	
+					  	</nav>
+				   <% else %>
+					   <% #Usuario de tipo Clinica 
+					   	 if current_user.rol_id == 4%>
+						  <nav class="color large-padding " >
+						 		<ul class = "no-list row center-xs list-style ">
+							 		<li class="col-md">
+							 			<img src="C:\Users\usuario\Pictures\logo ucla.jpg">	TriSalud, C.A
+							 		</li>
+						  			<li class="col-md b" id="b" >
+						  				<%= link_to "Inicio", root_path, {:class => "item-menu"}%>
+						  			</li>
+						  			<li class="col-md b" id="b" >
+						  				<%= link_to "Médicos asociados", root_path, {:class => "item-menu"}%>
+						  			</li>						  				
+						  			<li class="col-md b" id="b" >
+						  				<%= link_to "Ver perfil", root_path, {:class => "item-menu"}%>
+						  			</li>
+						  						  			
+						  			<li class="col-md b" id="b">
+							  				<%= link_to "Cerrar Sesión",  destroy_user_session_path, method: :delete %>	  				
+							  		</li>
+						 		</ul>	
+						  	</nav>
+						  	<% end %>	
+					<% end %>	
+				<% end %>		  	
+		  <% end %>
+		<% 
+  		#si el usuario no ha iniciado sesión
+		else %>
+		<nav class="color large-padding " >
+		 		<ul class = "no-list row center-xs list-style ">
+			 		<li class="col-md">
+			 			<img src="images/TriSalud.png " width=10px height=10px >	TriSalud, C.A
+			 		</li>
+			 		<li class="col-md f" id="f">
+		  				<%= link_to "Iniciar Sesión", new_user_session_path, {:class => "item-menu"}%>	  				
+		  			</li>
+		  			<li class="col-md f" id="f">
+		  				<%= link_to "Crear Cuenta", new_user_registration_path, {:class => "item-menu"}%>	  				
+		  			</li>
+		 		</ul>	
+		  	</nav>
+			
+	  	<% end %>
+	  </header>
+	<p lass="alert alert-success"><%#= notice%></p>
+  	<p lass="alert alert-success"><%= alert%></p>	
+    <%= yield %>
+  </body>
+</html>
+

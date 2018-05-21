@@ -1,0 +1,63 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Ced paciente:</strong>
+  <%= @paciente.ced_paciente %>
+</p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @paciente.nombres %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @paciente.apellidos %>
+</p>
+
+<p>
+  <strong>Nombres responsable:</strong>
+  <%= @paciente.nombres_responsable %>
+</p>
+
+<p>
+  <strong>Apellidos responsable:</strong>
+  <%= @paciente.apellidos_responsable %>
+</p>
+
+<p>
+  <strong>Telefono responsable:</strong>
+  <%= @paciente.telefono_responsable %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @paciente.direccion %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @paciente.telefono %>
+</p>
+
+<p>
+  <strong>Edad:</strong>
+  <%= @paciente.edad %>
+</p>
+
+<p>
+  <strong>Sexo:</strong>
+  <%= @paciente.sexo %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_paciente_path(@paciente) %> |
+<%= link_to 'Regresar', pacientes_path %>
+</div>
+</div>
+</div>

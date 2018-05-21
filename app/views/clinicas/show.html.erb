@@ -1,0 +1,37 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+
+<p id="notice"><%= notice %></p>
+
+<!--><p>
+  
+  <%#= @clinica.id %>
+</p>
+</-->
+<p>
+  <strong>Nombre:</strong>
+  <%= @clinica.nombre %>
+</p>
+<p>
+  <strong>Rif:</strong>
+  <%= @clinica.rif %>
+</p>
+
+   <%= @clinica.medicos.each do |medico|  %>
+   	<h2> <%= medico.user.email%>
+   	<h3> <%= link_to medico.nombres, medico %> </h3>
+   <%end%>
+
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @clinica.direccion %>
+</p>
+
+
+<%= link_to 'Editar', edit_clinica_path(@clinica) %> |
+<%= link_to 'Regresar', clinicas_path %>
+</div>
+</div>
+</div>

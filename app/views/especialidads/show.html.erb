@@ -1,0 +1,21 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @especialidad.descripcion %>
+</p>
+
+<p>
+  <strong>Estatus:</strong>
+  <%= @especialidad.estatus %>
+</p>
+
+<%= link_to 'Editar', edit_especialidad_path(@especialidad) %> |
+<%= link_to 'Regresar', especialidads_path %>
+</div>
+</div>
+</div>

@@ -1,0 +1,30 @@
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+  <div class="box">
+
+<%= form_with(model: especialidad, local: true) do |form| %>
+  <% if especialidad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(especialidad.errors.count, "error") %> prohibited this especialidad from being saved:</h2>
+
+      <ul>
+      <% especialidad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :descripcion %>
+    <%= form.text_field :descripcion, id: :especialidad_descripcion, class:"form-control" %>
+  </div>
+
+  
+  <div class="actions">
+    <%= form.submit "Guardar", class:"btn btn-primary b" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
