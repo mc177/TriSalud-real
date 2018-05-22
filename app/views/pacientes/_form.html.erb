@@ -65,6 +65,7 @@
     <%= form.label :sexo %>
     <%= form.text_field :sexo, id: :paciente_sexo, class:"form-control"  %>
   </div>
+  <div class="actions ">
   <%= form.fields_for :user do |f| %>
     <% sexos = {'Masculino' => 0, 'Femenino' => 1} %>
       <fieldset>

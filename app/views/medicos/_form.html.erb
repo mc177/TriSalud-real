@@ -17,7 +17,8 @@
 
   <div class="field">
     <%= form.label :especialidad_id %>
-    <%= form.text_field :especialidad_id, id: :medico_especialidad_id %>
+    
+    <%=collection_select(:medico, :especialidad_id, @especialidades, :id, :descripcion, prompt: true)%>
   </div> 
 
  <div class="row">

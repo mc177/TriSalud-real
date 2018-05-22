@@ -5,7 +5,7 @@ class PlanQuirurgicosController < ApplicationController
   # GET /plan_quirurgicos.json
   def index
     @plan_quirurgicos = PlanQuirurgico.where(:estatus => "En Proceso")
-    @servicios = Servicio.where(:estatus => "A")
+    
   end
 
   # GET /plan_quirurgicos/1
@@ -16,6 +16,7 @@ class PlanQuirurgicosController < ApplicationController
   # GET /plan_quirurgicos/new
   def new
     @plan_quirurgico = PlanQuirurgico.new
+    @servicios = Servicio.where(:estatus => "A")
   end
 
   # GET /plan_quirurgicos/1/edit

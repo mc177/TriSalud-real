@@ -15,5 +15,5 @@ class Medico < ApplicationRecord
   		MedicoenClinica.create(clinica_id: clinica_id, medico_id: self.id)
   	
   end
-
+end
 end
