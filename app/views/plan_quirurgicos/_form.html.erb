@@ -46,10 +46,17 @@
   </div>
 
   <div class="field">
-    <%= form.label :exámen %>
+    <%= form.label :examen %>
      <%= form.file_field :examen , id: :plan_quirurgico_examen %>
   </div>
-
+  <div class="field">
+    <label> Servicios</label>
+    <% @servicios.each do |servicio| %>
+      <div class="field">
+        <%= check_box_tag "servicios[]", servicio.id %> <%= servicio.descripcion%>
+      </div>
+    <% end%>
+  </div>
 
   <div class="actions">
     <%= form.submit "Guardar", class:"b waves-effect waves-light btn-large" %>

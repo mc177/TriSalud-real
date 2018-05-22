@@ -15,6 +15,7 @@ class PacientesController < ApplicationController
   # GET /pacientes/new
   def new
     @paciente = Paciente.new
+    @paciente.user = User.new
   end
 
   # GET /pacientes/1/edit
@@ -55,7 +56,7 @@ class PacientesController < ApplicationController
   # DELETE /pacientes/1.json
   def destroy
     @paciente = Paciente.find(params[:id])
-    @paciente.estatus = 'I'      
+    @paciente.estatus = "I"      
     @paciente.save
     respond_to do |format|
       format.html { redirect_to pacientes_url, notice: 'El paciente ha sido eliminado con éxito' }
@@ -71,6 +72,6 @@ class PacientesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def paciente_params
-      params.require(:paciente).permit(:user_id, :ced_paciente, :nombres, :apellidos, :nombres_responsable, :apellidos_responsable, :telefono_responsable, :direccion, :telefono, :edad, :sexo, :estatus)
+      params.require(:paciente).permit(:user_id, :ced_paciente, :nombres, :apellidos, :nombres_responsable, :apellidos_responsable, :telefono_responsable, :direccion, :telefono, :edad, :sexo, :estatus, user_attributes: [:email, :password, :password_confirmation, :rol_id])
     end
 end

@@ -19,7 +19,7 @@ gem 'jquery-rails'
 gem 'material_icons'
 #Registra usuarios
 gem 'devise'
-gem 'bcrypt'
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
