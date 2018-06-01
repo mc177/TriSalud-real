@@ -75,8 +75,15 @@ html,body{
   background-color:#FFFFFF;
   margin:0;
   line-height:16px;
-  
+
+  background: url(fondo2.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
 }
+
 
 a,a:visited{
 	color: inherit !important;
@@ -96,10 +103,13 @@ a,a:visited{
 
  #c:active{
  	color:white;
+  padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
  }
 
  .d:hover{
- 	color: black;
+ 	color:  #9c9c9c;
  }
 
  #d:active{
@@ -137,12 +147,43 @@ a,a:visited{
   float: right;
 }
 
+.trisal{
+  margin-right: 100px;
+}
 
-element.style {
-    width: 145.641px;
-    position: absolute;
-    left: 1195.86px;
-    opacity: 1;
-    display: block;
-    top: 65px;
+.brand{
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+
+}
+
+.brand2{
+  margin-right: 150px;
+}
+
+figure{
+  width:150px;
+  width: 150px;
+  background: url(trisaludLogo.jpg);
+}
+
+.tablas{
+-ms-flex-preferred-size: 50%;
+width: 10000px;
+background-color: #399c9c33;
+margin-top: 110px;
+border-bottom-left-radius: 100px;
+border-top-right-radius: 100px;
+margin-left: 260px;
+padding-left: 100px;
+padding-right: 40px;
+}
+
+.titulolista{
+
+  margin-left: 250px;
 }

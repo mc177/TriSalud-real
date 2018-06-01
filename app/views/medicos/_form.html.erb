@@ -15,43 +15,48 @@
     </div>
   <% end %>
 
-  
   <div class="field">
     <%= form.label :especialidad_id %>
     
     <%=collection_select(:medico, :especialidad_id, @especialidades, :id, :descripcion, prompt: true)%>
-  </div>
+  </div> 
 
-  <div class="field">
-    <%= form.label :nombres %>
-    <%= form.text_field :nombres, id: :medico_nombres, class:"form-control" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :apellidos %>
-    <%= form.text_field :apellidos, id: :medico_apellidos, class:"form-control" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :direccion %>
-    <%= form.text_field :direccion, id: :medico_direccion, class:"form-control" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telefono %>
-    <%= form.text_field :telefono, id: :medico_telefono, class:"form-control" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :edad %>
-    <%= form.text_field :edad, id: :medico_edad, class:"form-control" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sexo %>
-    <%= form.text_field :sexo, id: :medico_sexo, class:"form-control" %>
-  </div>
-  <div class="field">
+ <div class="row">
+    
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix right2">account_circle</i>
+          <label for="last_name">Nombres: </label>
+          <%= form.text_field :nombres, id: :medico_nombres, class:"form-control validate" %>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix right2">account_circle</i>
+          <label for="last_name">Apellidos: </label>
+          <%= form.text_field :apellidos, id: :medico_apellidos, class:"form-control validate" %>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix right2">location_city</i>
+          <label for="last_name">Dirección: </label>
+          <%= form.text_field :direccion, id: :medico_direccion, class:"form-control validate" %>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix right2">phone</i>
+          <label for="last_name">Telefono: </label>
+          <%= form.text_field :telefono, id: :medico_telefono, class:"form-control validate" %>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix right2">hourglass_full</i>
+          <label for="last_name">Edad: </label>
+          <%= form.text_field :edad, id: :medico_edad, class:"form-control validate" %>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix right2">wc</i>
+          <label for="last_name">sexo: </label>
+          <%= form.text_field :sexo, id: :medico_sexo, class:"form-control validate" %>
+        </div>
+      </div>
+      
+      <div class="field">
     <label> Clinicas</label>
     <% @clinicas.each do |clinica| %>
       <div class="field">
@@ -88,8 +93,17 @@
 
             <%= f.hidden_field :estatus, :value => "A" %>
   <%end%>
+      <%#<div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix right">vpn_key</i>
+          <label for="password">Password</label>
+        </div>
+      </div>
+    %>
+  </div>
+
   <div class="actions">
-   <%= form.submit "Guardar", class:"btn btn-primary b" %>
+   <%= form.submit "Guardar", class:"b waves-effect waves-light btn-large" %>
   </div>
 <% end %>
 </div>

@@ -5,6 +5,7 @@ class PlanQuirurgicosController < ApplicationController
   # GET /plan_quirurgicos.json
   def index
     @plan_quirurgicos = PlanQuirurgico.where(:estatus => "En Proceso")
+    
   end
 
   # GET /plan_quirurgicos/1

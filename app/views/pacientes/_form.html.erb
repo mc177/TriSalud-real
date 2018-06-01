@@ -15,7 +15,6 @@
     </div>
   <% end %>
 
-
   
   <div class="field">
     <%= form.label :cedula %>
@@ -66,7 +65,6 @@
     <%= form.label :sexo %>
     <%= form.text_field :sexo, id: :paciente_sexo, class:"form-control"  %>
   </div>
-
   <div class="actions ">
   <%= form.fields_for :user do |f| %>
     <% sexos = {'Masculino' => 0, 'Femenino' => 1} %>
@@ -99,7 +97,8 @@
           </fieldset> 
   <%end%>
 
-    <%= form.submit "Guardar", class:"btn btn-primary b" %>
+  <div class="actions ">
+    <%= form.submit "Guardar", class:"b waves-effect waves-light btn-large" %>
   </div>
 <% end %>
 </div>

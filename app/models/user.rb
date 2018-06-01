@@ -7,5 +7,4 @@ class User < ApplicationRecord
   has_one :paciente
   has_one :medico
   has_one :clinica
-
 end

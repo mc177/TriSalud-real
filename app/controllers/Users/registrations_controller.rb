@@ -5,18 +5,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # GET /resource/sign_up
    #def new    
     #@user = User.new
-    #@user.pacientes.build    
+    #@user.pacientes.build
    #end
 
   # POST /resource
-  #def create
-   #   @cant=     
-    #  @user = User.new sign_up_params
-     # @paciente= @user.pacientes          
-      #@user.estatus = "A"
-      #@paciente.user_id= @user.id
-      #@user.save
-      
+  #def create     
+   #   @user = User.new sign_up_params    
+    #  @user.estatus = "A"
+     # @user.save
   #end
 
   # GET /resource/edit
@@ -44,6 +40,7 @@ private
   def paciente_params
     params.require(:paciente).permit(:user_id, :ced_paciente, :nombres, :apellidos, :nombres_responsable, :apellidos_responsable, :telefono_responsable, :direccion, :telefono, :edad, :sexo, :estatus)
   end
+
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]

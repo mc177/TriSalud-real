@@ -21,7 +21,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
       t.integer :rol_id, :null => false
-      t.references :paciente, foreign_key: true, on_delete: :cascade
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at

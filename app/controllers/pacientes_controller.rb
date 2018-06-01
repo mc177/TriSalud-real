@@ -5,7 +5,6 @@ class PacientesController < ApplicationController
   # GET /pacientes.json
   def index
     @pacientes = Paciente.where(:estatus => "A")
-
   end
 
   # GET /pacientes/1
@@ -57,7 +56,7 @@ class PacientesController < ApplicationController
   # DELETE /pacientes/1.json
   def destroy
     @paciente = Paciente.find(params[:id])
-    @paciente.estatus = 'I'      
+    @paciente.estatus = "I"      
     @paciente.save
     respond_to do |format|
       format.html { redirect_to pacientes_url, notice: 'El paciente ha sido eliminado con éxito' }
