@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180520201804) do
+ActiveRecord::Schema.define(version: 20180601041001) do
 
   create_table "clinicas", force: :cascade do |t|
     t.integer "user_id"
@@ -104,6 +104,8 @@ ActiveRecord::Schema.define(version: 20180520201804) do
     t.string "estatus", limit: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "especialidad"
+    t.integer "clinica"
     t.index ["medico_id"], name: "index_plan_quirurgicos_on_medico_id"
     t.index ["paciente_id"], name: "index_plan_quirurgicos_on_paciente_id"
   end

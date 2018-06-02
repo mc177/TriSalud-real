@@ -15,11 +15,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :médico_id %>
-    <%= form.text_field :medico_id, id: :plan_quirurgico_medico_id, class:"form-control" %>
-  </div>
+    <div class="field">
+    <%= form.label :especialidad %>
+    
+    <%=collection_select(:plan_quirurgico, :especialidad, @especialidades, :id, :descripcion, { prompt: 'Por favor seleccione una opción' })%>
+    </div>
+    <div class="field">
+    <%= form.label :médico %>
+    
+    <%=collection_select(:plan_quirurgico, :medico_id, Medico.all.where(especialidad_id: :especialidad), :id, :nombres, { prompt: 'Por favor seleccione una opción' })%>
+    </div>
+    <div class="field">
+    <%= form.label :clínica %>
+    
+    <%=collection_select(:plan_quirurgico, :clinica, MedicoenClinica.all.where(medico_id: :medico_id), :id, :nombres, { prompt: 'Por favor seleccione una opción' })%>
+    </div>    
 
+  
   <div class="field">
     <%= form.label :paciente_id %>
     <%= form.text_field :paciente_id, id: :plan_quirurgico_paciente_id,class:"form-control" %>
@@ -65,3 +77,39 @@
 </div>
 </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#plan_quirurgico_especialidad").change(function(){
+      especialidadId = this.value;
+      $.get( "http://localhost:3000/medicos/medicosDeEspecialidad", { id: especialidadId } )
+        .done(function( data ) {
+          var string = "";
+          for (var i = 0; i < data.length; i++) {
+            string = string + '<option value="'+data[i].id+'">'+data[i].nombres+'</option>';
+          }
+          $("#plan_quirurgico_medico_id").html('').append(string);
+          $('#plan_quirurgico_medico_id').material_select();
+        });
+    })
+  })
+  
+
+</script>>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#plan_quirurgico_medico_id").change(function(){
+      medicoId = this.value;
+      $.get( "http://localhost:3000/clinicas/clinicasDeMedico", { id: medicoId } )
+        .done(function( data ) {
+          console.log(data)
+          var string = "";
+          for (var i = 0; i < data.length; i++) {
+            string = string + '<option value="'+data[i].id+'">'+data[i].nombre+'</option>';
+
+          }
+          $("#plan_quirurgico_clinica").html('').append(string);
+          $('#plan_quirurgico_clinica').material_select();
+        });
+    })
+  })
+  </script>>
