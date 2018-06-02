@@ -5,7 +5,6 @@ class PlanQuirurgicosController < ApplicationController
   # GET /plan_quirurgicos.json
   def index
     @plan_quirurgicos = PlanQuirurgico.where(:estatus => "En Proceso")
-    
   end
 
   # GET /plan_quirurgicos/1
@@ -16,26 +15,16 @@ class PlanQuirurgicosController < ApplicationController
   # GET /plan_quirurgicos/new
   def new
     @plan_quirurgico = PlanQuirurgico.new
-    @servicios = Servicio.where(:estatus => "A")
-    @especialidades = Especialidad.where(:estatus => "A")
-    @clinicas = Clinica.where(:estatus => "A")
-    @medicosxespecialidad = Medico.where(:especialidad_id => 3)
-    #render template: "books/show", :resource => "Some text" 
   end
 
   # GET /plan_quirurgicos/1/edit
   def edit
   end
 
-  def seleccionarEspecialidad
-    @especialidades = Especialidad.where(:estatus => "A")    
-  end
-
   # POST /plan_quirurgicos
   # POST /plan_quirurgicos.json
   def create
     @plan_quirurgico = PlanQuirurgico.new(plan_quirurgico_params)
-    @plan_quirurgico.servicios = params[:servicios]
     @plan_quirurgico.estatus = "En Proceso"
     puts params
     puts @plan_quirurgico.examen 
@@ -84,6 +73,6 @@ class PlanQuirurgicosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_quirurgico_params
-      params.require(:plan_quirurgico).permit(:espeselec,:medico_id, :paciente_id, :fecha_consulta, :descp_consulta, :fecha_pq, :presupuesto, :examen, :estatus, :servicios)
+        params.require(:plan_quirurgico).permit(:medico_id, :paciente_id, :fecha_consulta, :descp_consulta, :fecha_pq, :presupuesto, :examen, :estatus)
     end
 end

@@ -20,24 +20,35 @@
   </thead>
 
   <tbody>
-    <% @plan_quirurgicos.each do |plan_quirurgico| %>
+    <% if @plan_quirurgicos.any? %>
+
+      <% @plan_quirurgicos.each do |plan_quirurgico| %>
+        <tr>
+          <td><%#= plan_quirurgico.medico %></td>
+          <td><%#= plan_quirurgico.paciente %></td>
+          <td height="10%" width="10%"><%= plan_quirurgico.fecha_consulta %></td>
+          <td height="10%" width="10%"><%= plan_quirurgico.descp_consulta %></td>
+          <td height="10%" width="10%"><%= plan_quirurgico.fecha_pq %></td>
+          <td height="10%" width="10%"><%= plan_quirurgico.presupuesto %></td> 
+          <td height="10%" width="10%"><%= plan_quirurgico.estatus %></td>      
+          <td height="10%" width="10%"><%= link_to 'Ver', plan_quirurgico, class:"waves-effect waves-light b" %></td>
+          <td height="10%" width="10%"><%= link_to 'Modificar', edit_plan_quirurgico_path(plan_quirurgico),  class:"waves-effect waves-light b" %></td>
+      <% end %>
+    
+    <% else %>
       <tr>
-        <td><%#= plan_quirurgico.medico %></td>
-        <td><%#= plan_quirurgico.paciente %></td>
-        <td height="10%" width="10%"><%= plan_quirurgico.fecha_consulta %></td>
-        <td height="10%" width="10%"><%= plan_quirurgico.descp_consulta %></td>
-        <td height="10%" width="10%"><%= plan_quirurgico.fecha_pq %></td>
-        <td height="10%" width="10%"><%= plan_quirurgico.presupuesto %></td> 
-        <td height="10%" width="10%"><%= plan_quirurgico.estatus %></td>      
-        <td height="10%" width="10%"><%= link_to 'Ver', plan_quirurgico %></td>
-        <td height="10%" width="10%"><%= link_to 'Modificar', edit_plan_quirurgico_path(plan_quirurgico) %></td>
-    <% end %>
+        <td  colspan="10">  
+            <p> No Existen Planes quirúrgicos registrados... </p>
+        </td>
+      </tr>
+    <%end%>
+
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'Planificar un nuevo Plan Quirurgico', new_plan_quirurgico_path %>
+<%= link_to 'Planificar un nuevo Plan Quirurgico', new_plan_quirurgico_path, class:" b waves-effect waves-light btn-large" %>
 </div>
 </div>
 </div>

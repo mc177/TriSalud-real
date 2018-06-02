@@ -1,4 +1,3 @@
 class Especialidad < ApplicationRecord
-	self.table_name = "especialidads"
-	has_many :medicos
+	validates :descripcion, presence:true
 end

@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>TriSalud</title>
-    <link href="images/trisaludLogo.ico" rel=	"ico">
+    <%= favicon_link_tag 'trisaludLogo.ico' %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track'=>true %>
@@ -20,31 +20,27 @@
 		  if current_user.rol_id == 1 %>
 
 
-		  <header  class="z-depth-5">
+		  <header>
 		  	
 
 		  		<ul id="dropdown1" class="dropdown-content no-list row center-xs list-style"  >
 				  <li><%=link_to "Registrar Paciente", new_paciente_path %> </li>
 				  <li><%=link_to "Consultar Paciente", pacientes_path %></li>
-				  <li><%=link_to "Reactivar Paciente", pacientes_path %></li>
 				</ul>
 
 				<ul id="dropdown2" class="dropdown-content no-list row center-xs list-style"  >
 				  <li><%=link_to "Registrar Médico", new_medico_path %> </li>
 				  <li><%=link_to "Consultar Médico", medicos_path %> </li>
-				  <li><%=link_to "Reactivar Médico", pacientes_path %></li>
 				</ul>
 
 				<ul id="dropdown3" class="dropdown-content no-list row center-xs list-style"  >
 				  <li><%=link_to "Registrar Clínica", new_clinica_path %> </li>
 				  <li><%=link_to "Consultar Clínicas", clinicas_path %> </li>
-				  <li><%=link_to "Reactivar Clínica", pacientes_path %></li>
 				</ul>
 
 				<ul id="dropdown4" class="dropdown-content no-list row center-xs list-style"  >
 				  <li><%=link_to "Registrar Especialidad", new_especialidad_path %> </li>
 				  <li><%=link_to "Consultar Especialidades", especialidads_path %> </li>
-				  <li><%=link_to "Reactivar Especialidad", pacientes_path %></li>
 				</ul>
 
 				<ul id="dropdown5" class="dropdown-content no-list row center-xs list-style"  >
@@ -53,47 +49,52 @@
 				  <li><a href="#!">Cirugías Realizadas con éxito</a></li>
 				</ul>
 
-				<nav class="color large-padding">
+				<nav class="color large-padding z-depth-5">
 					<div class="nav-wrapper ">
 					    
 					    <ul class=" no-list row center-xs list-style">
+					    <li>
+							 <%= image_tag("trisaludLogo.jpg", width:"50px", height:"50px", style:"border-bottom-right-radius: 46px;/*! margin-top: 10px; */margin-right: 200px;margin-left: -23px;") %>
+						</li>
+
 				    	<li>
-			 				<a class="tooltipped brand brand2" data-position="bottom" data-delay="50" data-tooltip="Pagina de Inicio de Sesión" href="/"> 
+			 				<a class="tooltipped brand" data-position="bottom" data-delay="50" data-tooltip="Página Principal" style="margin-left: -188px;" href="/"> 
 							TRISALUD, C.A </a>	
+
 				    	</li>
 					      <!-- Dropdown Trigger -->
 					     <li >
-					      <a class="dropdown-button" href="" data-activates="dropdown1">Gestionar Pacientes
+					      <a class="dropdown-button" style="font-size: 12px;" href="" data-activates="dropdown1">Gestionar Pacientes
 					      	<i class="material-icons right">arrow_drop_down</i>
 					      </a>
 					  	 </li>
 
 						<li >
-					      <a class="dropdown-button" href="" data-activates="dropdown2">Gestionar Médicos
+					      <a class="dropdown-button" style="font-size: 12px;" href="" data-activates="dropdown2">Gestionar Médicos
 					      	<i class="material-icons right">arrow_drop_down</i>
 					      </a>
 					  	</li>
 
 					  	<li >
-					      <a class="dropdown-button" href="" data-activates="dropdown3">Gestionar Clinicas
+					      <a class="dropdown-button" style="font-size: 12px;" href="" data-activates="dropdown3">Gestionar Clinicas
 					      	<i class="material-icons right">arrow_drop_down</i>
 					      </a>
 					  	</li>
 
 						<li >
-					      <a class="dropdown-button" href="" data-activates="dropdown4">Gestionar Especialidades
+					      <a class="dropdown-button" style="font-size: 12px;" href="" data-activates="dropdown4">Gestionar Especialidades
 					      	<i class="material-icons right">arrow_drop_down</i>
 					      </a>
 					  	</li>
 
 						<li >
-					      <a class="dropdown-button" href="" data-activates="dropdown5">Gestionar de Reportes
+					      <a class="dropdown-button" style="font-size: 12px;" href="" data-activates="dropdown5">Gestión de Reportes
 					      	<i class="material-icons right">arrow_drop_down</i>
 					      </a>
 					  	</li>
 
-					  	<li>
-			  				<%= link_to "Cerrar Sesión",  destroy_user_session_path, method: :delete, class:"b waves-effect waves-light"  %>	  	
+					  	<li >
+			  				<%= link_to "Cerrar Sesión",  destroy_user_session_path, method: :delete, class:"b waves-effect waves-light", style:"font-size: 13px;vertical-align: baseline;" %>	  	
 						</li>
 
 					    </ul>
@@ -106,18 +107,22 @@
 				  <nav class="color large- z-depth-5" >
 				 		<ul class=" no-list row center-xs list-style">
 
+				 			<li>
+				 				<%= image_tag("trisaludLogo.jpg", width:"50px", height:"50px", style:"border-bottom-right-radius: 46px;margin-top: 6px;margin-right: 200px;margin-left: -8px;") %>
+				 			</li>
+
 					 		<li>
-				 				<a class="tooltipped brand brand2" data-position="bottom" data-delay="50" data-tooltip="Pagina de Inicio de Sesión" href="/"> 
+				 				<a class="tooltipped brand " data-position="bottom" data-delay="50" data-tooltip="Página principal" style="margin-left: -208px;" href="/"> 
 								TRISALUD, C.A </a>
 					 		</li>
 				  			<li >
-				  				<%= link_to "Planificar cirugia", new_plan_quirurgico_path, {:class => "brand2 "}%>
+				  				<%= link_to "Planificar cirugia", new_plan_quirurgico_path, style:"margin-left: 510px;"%>
 				  			</li>
 				  			<li >
-				  				<%= link_to "Consultar plan quirurgico", root_path, {:class => "brand2 "}%>
+				  				<%= link_to "Consultar plan quirurgico", plan_quirurgicos_path %>
 				  			</li>	
 				  			<li >
-				  				<%= link_to "Ver perfil", root_path, {:class => "brand2 "} %>
+				  				<%= link_to "Ver perfil", plan_quirurgicos_path %>
 				  			</li>
 				  					  			
 				  			<li>
@@ -131,20 +136,20 @@
 				  <nav class="color large-padding z-depth-5" >
 				 		<ul class=" no-list row center-xs list-style">
 						 		<li>
-					 				<a class="tooltipped brand brand2" data-position="bottom" data-delay="50" data-tooltip="Pagina de Inicio de Sesión" href="/"> 
+					 				<a class="tooltipped brand" data-position="bottom" data-delay="50" data-tooltip="Página principal" style="margin-left: -17px;" href="/"> 
 									TRISALUD, C.A </a>
 								</li>
 					  			<li >
-					  				<%= link_to "Consultar historial de paciente", historial_pacientes_path, {:class => "brand2 "}%>
+					  				<%= link_to "Consultar historial de paciente", historial_pacientes_path, style:"margin-left: 250px;"%>
 					  			</li>
 					  			<li >
-					  				<%= link_to "Consultar plan quirurgico", plan_quirurgicos_path, {:class => "brand2 "}%>
+					  				<%= link_to "Consultar plan quirurgico", plan_quirurgicos_path%>
 					  			</li>	
 					  			<li>
-					  				<%= link_to "Cirugías pendientes", root_path, {:class => "brand2 "}%>
+					  				<%= link_to "Cirugías pendientes", plan_quirurgicos_path%>
 					  			</li>
 					  			<li >
-					  				<%= link_to "Ver perfil", root_path, {:class => "brand2 "}%>
+					  				<%= link_to "Ver perfil", plan_quirurgicos_path%>
 					  			</li>			  			
 					  			<li >
 						  			<%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class:"b waves-effect waves-light"%>	  				
@@ -157,19 +162,19 @@
 					  <nav class="color large-padding z-depth-5" >
 					 		<ul class=" no-list row center-xs list-style">
 							 		<li>
-					 					<a class="tooltipped brand brand2" data-position="bottom" data-delay="50" data-tooltip="Pagina de Inicio de Sesión" href="/"> 
+					 					<a class="tooltipped brand " data-position="bottom" data-delay="50" data-tooltip="Pagina principal" style="margin-left: -15px;" href="/"> 
 										TRISALUD, C.A </a>
 					 				</li>
 						  			
 						  			<li >
-						  				<%= link_to "Médicos asociados", medicos_path, {:class => "brand2 "}%>
+						  				<%= link_to "Médicos asociados", medicos_path, style:"margin-left: 700px;"%>
 						  			</li>						  				
 						  			<li >
-						  				<%= link_to "Ver perfil", root_path, {:class => "brand2 "}%>
+						  				<%= link_to "Ver perfil", plan_quirurgicos_path %>
 						  			</li>
 						  						  			
 						  			<li >
-							  				<%= link_to "Cerrar Sesión",  destroy_user_session_path, method: :delete, class:"b waves-effect waves-light" %>	  				
+						  				<%= link_to "Cerrar Sesión",  destroy_user_session_path, method: :delete, class:"b waves-effect waves-light" %>	  				
 							  		</li>
 						 		</ul>	
 						  	</nav>
@@ -183,17 +188,20 @@
 			<nav class="color z-depth-5">
 				
 				<ul >
+					<li>
+						<%= image_tag("trisaludLogo.jpg", width:"50px", height:"50px", style:"border-bottom-right-radius: 46px;margin-top: 10px;margin-right: 100px;") %>
+					</li>
 					<li >	
 						<a class="tooltipped brand" data-position="bottom" data-delay="50" data-tooltip="Pagina de Inicio de Sesión" href="/users/sign_in"> 
-						TRISALUD, C.A </a>
-						
+						TRISALUD, C.A 
+					    </a>
 					</li>
-					<li class="brand right c" id="b" >
+					<li class=" right c" id="b" >
 		  				<%= link_to "Iniciar Sesión", new_user_session_path, class:"b waves-effect waves-light"%>
 
 		  			</li>
-					<li class="brand right c" id="b" >
-		  				<%= link_to "Crear Cuenta", new_user_registration_path, class:"b waves-effect waves-light"%>
+					<li class=" right c" id="b" >
+		  				<%= link_to "Crear Cuenta", new_paciente_path, class:"b waves-effect waves-light"%>
 		  			</li>
 
 				</ul>
@@ -218,11 +226,29 @@
 			
 		</script>
 
+		<% if flash[:notice] %>
+	  	<div class="alert-success">
+	  		<i class="material-icons prefix right">done_all</i>
+	  		<%= flash[:notice] %>
+	  	</div>
+
+  	 	<% elsif flash[:error] %>
+			<div class="alert-error">
+	  			<i class="material-icons prefix right">info_outline</i>
+	  			<%= flash[:error] %>
+	  		</div>
+		  	<% elsif flash[:alert] %>
+				<div class="alert">
+					<i class="material-icons prefix right">report</i>
+		  			<%= flash[:alert] %>
+		  		</div>
+		<%end%>	
+
+    	<%= yield %>
+    	
 	  </header>
 
-	<p lass="alert alert-success"><%#= notice%></p>
-  	<p lass="alert alert-success"><%= alert%></p>	
-    <%= yield %>
+	  
   </body>
 </html>
 

@@ -1,0 +1,5 @@
+<ul>
+    <% @clinicas.each do |user| %>
+         <li><%= link_to user.user_id, user_path(user) %></li>
+    <% end %>
+</ul>

@@ -4,27 +4,18 @@ class ClinicasController < ApplicationController
   # GET /clinicas
   # GET /clinicas.json
   def index
-    @clinicas = Clinica.where(:estatus => "A")
+    @clinicas = Clinica.where(["estatus = 'A' OR estatus = 'I'"])
   end
 
   # GET /clinicas/1
   # GET /clinicas/1.json
   def show
-  end
-  def clinicaMedico
-    @clinicasxmedico = MedicoenClinica.where(:medico_id => params[:id])
-    puts "********************"
-    puts @clinicasxmedico.ids
-     @clinicasxmedico.each do |clinicasmedico|
-      @clinicas = Clinica.where(:estatus => "A").where(:id => clinicasmedico.clinica_id)
-     end  
-    render json: @clinicas   
+    
   end
 
   # GET /clinicas/new
   def new
     @clinica = Clinica.new
-    @clinica.user = User.new
   end
 
   # GET /clinicas/1/edit
@@ -38,7 +29,7 @@ class ClinicasController < ApplicationController
     @clinica.estatus = "A" 
     respond_to do |format|
       if @clinica.save
-        format.html { redirect_to @clinica, notice: 'La clinica fue registrada exitosamente.' }
+        format.html { redirect_to @clinica, notice: "La Clínica ha sido registrado con éxito"}
         format.json { render :show, status: :created, location: @clinica }
       else
         format.html { render :new }
@@ -52,7 +43,7 @@ class ClinicasController < ApplicationController
   def update
     respond_to do |format|
       if @clinica.update(clinica_params)
-        format.html { redirect_to @clinica, notice: 'Los datos de la clinica fueron modificados exitosamente.' }
+        format.html { redirect_to @clinica, notice: "Los datos de la clínica #{@clinica.nombre} han sido modificados con éxito"}
         format.json { render :show, status: :ok, location: @clinica }
       else
         format.html { render :edit }
@@ -64,14 +55,20 @@ class ClinicasController < ApplicationController
   # DELETE /clinicas/1
   # DELETE /clinicas/1.json
   def destroy
+     respond_to do |format|
     @clinica = Clinica.find(params[:id])
-    @clinica.estatus = "I"
-      @clinica.save 
-      respond_to do |format|
-      format.html { redirect_to clinicas_url, notice: 'La Clínica ha sido eliminada exitosamente' }
-      format.json { head :no_content }
+      if @clinica.estatus == 'I'
+            @clinica.estatus = 'A'
+            @clinica.save
+            format.html { redirect_to clinicas_url, notice: "La Clínica #{@clinica.nombre} ha sido reactivada con éxito"}
+            format.json { head :no_content }
+        else
+          @clinica.estatus = 'I'      
+          @clinica.save
+            format.html { redirect_to clinicas_url, notice: "La Clínica #{@clinica.nombre} ha sido eliminada con éxito"}
+            format.json { head :no_content }
+      end
     end
-    
   end
 
   private
@@ -82,6 +79,6 @@ class ClinicasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def clinica_params
-      params.require(:clinica).permit(:user_id, :rif, :nombre, :direccion, :estatus, user_attributes: [:email, :password, :password_confirmation, :rol_id])
+      params.require(:clinica).permit(:user_id, :rif, :nombre, :direccion, :estatus)
     end
 end

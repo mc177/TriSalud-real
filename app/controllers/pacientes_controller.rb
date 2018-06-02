@@ -4,7 +4,7 @@ class PacientesController < ApplicationController
   # GET /pacientes
   # GET /pacientes.json
   def index
-    @pacientes = Paciente.where(:estatus => "A")
+    @pacientes = Paciente.where(["estatus = 'A' OR estatus = 'I'"])
   end
 
   # GET /pacientes/1
@@ -15,7 +15,6 @@ class PacientesController < ApplicationController
   # GET /pacientes/new
   def new
     @paciente = Paciente.new
-    @paciente.user = User.new
   end
 
   # GET /pacientes/1/edit
@@ -29,7 +28,7 @@ class PacientesController < ApplicationController
     @paciente.estatus = "A" 
     respond_to do |format|
       if @paciente.save
-        format.html { redirect_to @paciente, notice: 'El paciente fue registrado exitosamente.' }
+        format.html { redirect_to @paciente, notice: "Paciente registrado con éxito"}
         format.json { render :show, status: :created, location: @paciente }
       else
         format.html { render :new }
@@ -43,7 +42,7 @@ class PacientesController < ApplicationController
   def update
     respond_to do |format|
       if @paciente.update(paciente_params)
-        format.html { redirect_to @paciente, notice: 'Los datos del paciente han sido modificado con éxito' }
+        format.html { redirect_to @paciente, notice:"Los datos del paciente #{@paciente.nombres} fueron modificados con éxito"}
         format.json { render :show, status: :ok, location: @paciente }
       else
         format.html { render :edit }
@@ -55,12 +54,19 @@ class PacientesController < ApplicationController
   # DELETE /pacientes/1
   # DELETE /pacientes/1.json
   def destroy
-    @paciente = Paciente.find(params[:id])
-    @paciente.estatus = "I"      
-    @paciente.save
     respond_to do |format|
-      format.html { redirect_to pacientes_url, notice: 'El paciente ha sido eliminado con éxito' }
-      format.json { head :no_content }
+    @paciente = Paciente.find(params[:id])
+      if @paciente.estatus == 'I'
+            @paciente.estatus = 'A'
+            @paciente.save
+            format.html { redirect_to pacientes_url, notice: "El paciente #{@paciente.nombres} ha sido reactivado con éxito"}
+            format.json { head :no_content }
+        else
+          @paciente.estatus = 'I'      
+          @paciente.save
+            format.html { redirect_to pacientes_url, notice: "El paciente #{@paciente.nombres} ha sido eliminado con éxito"}
+            format.json { head :no_content }
+      end
     end
   end
 
@@ -72,6 +78,6 @@ class PacientesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def paciente_params
-      params.require(:paciente).permit(:user_id, :ced_paciente, :nombres, :apellidos, :nombres_responsable, :apellidos_responsable, :telefono_responsable, :direccion, :telefono, :edad, :sexo, :estatus, user_attributes: [:email, :password, :password_confirmation, :rol_id])
+      params.require(:paciente).permit(:user_id, :ced_paciente, :nombres, :apellidos, :nombres_responsable, :apellidos_responsable, :telefono_responsable, :direccion, :telefono, :edad, :sexo, :estatus)
     end
 end

@@ -35,10 +35,7 @@ private
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :current_password,:rol_id )
-  end
-  def paciente_params
-    params.require(:paciente).permit(:user_id, :ced_paciente, :nombres, :apellidos, :nombres_responsable, :apellidos_responsable, :telefono_responsable, :direccion, :telefono, :edad, :sexo, :estatus)
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_password,:rol_id, )
   end
 
 

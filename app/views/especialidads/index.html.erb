@@ -2,11 +2,10 @@
   <div class="col-xs-8 tablas">
   <div class="box">
 
-<p id="notice"><%= notice %></p>
 
 <h1 class="titulolista">Lista de Especialidades</h1>
 
-    <table width="203%" border="1" cellpadding="0" cellspacing="0" bordercolor="#2f4f4f">
+    <table class="striped" width="203%" border="1" cellpadding="0" cellspacing="0" bordercolor="#2f4f4f">
       <thead>
         <tr>
           <th height="10%" width="10%">Id</th>
@@ -17,22 +16,36 @@
       </thead>
 
       <tbody>
-        <% @especialidads.each do |especialidad| %>
+        <% if @especialidads.any? %>
+          <% @especialidads.each do |especialidad| %>
+            <tr>
+              <td height="10%" width="10%"><%= especialidad.id %></td>
+              <td height="10%" width="10%"><%= especialidad.descripcion %></td>
+              <td height="10%" width="10%"><%= especialidad.estatus %></td>
+              <td><%= link_to 'Ver', especialidad, class:"waves-effect waves-light b" %></td>
+              <td><%= link_to 'Modificar', edit_especialidad_path(especialidad), class:"waves-effect waves-light b" %></td>
+              <% if especialidad.estatus == "A" %>
+                <td><%= link_to "Eliminar", especialidad, method: :delete, data: { confirm: "¿Esta seguro que desea eliminar a la especialidad #{especialidad.descripcion} ?" }, class:"waves-effect waves-light b"%></td>
+              <% else %>
+                <td><%= link_to "Reactivar Especialidad", especialidad, method: :delete, data: { confirm: "¿Esta seguro que desea reactivar a la especialidad #{especialidad.descripcion} ?" }, class:"waves-effect waves-light b"%></td>
+              <%end%>    
+            </tr>
+          <% end %>
+        <%else %>
+
           <tr>
-            <td height="10%" width="10%"><%= especialidad.id %></td>
-            <td height="10%" width="10%"><%= especialidad.descripcion %></td>
-            <td height="10%" width="10%"><%= especialidad.estatus %></td>
-            <td><%= link_to 'Ver', especialidad %></td>
-            <td><%= link_to 'Modificar', edit_especialidad_path(especialidad) %></td>
-            <td><%= link_to 'Eliminar', especialidad, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+            <td colspan="10">  
+                <p> No Existen especialidades registradas... </p>
+            </td>
           </tr>
-        <% end %>
+      <%end%>
+
       </tbody>
     </table>
 
 <br>
 
-<%= link_to 'Registrar Nueva Especialidad', new_especialidad_path %>
+<%= link_to 'Registrar Nueva Especialidad', new_especialidad_path, class:" waves-effect waves-light btn-large b"%>
 </div>
 </div>
 </div>

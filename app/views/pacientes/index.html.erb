@@ -1,27 +1,29 @@
 <div class="row">
-  <div class="col-xs-8 tablas">
+  <div class="col-xs-8 tablas " style="padding-left: 50px;">
   <div class="box">
-<p id="notice"><%= notice %></p>
 
 <h1 class="titulolista">Lista de Pacientes</h1>
 
-<table  width="203%" border="1" cellpadding="0" cellspacing="0" bordercolor="#2f4f4f">
+<table  class="striped" width="203%" border="1" cellpadding="0" cellspacing="0" bordercolor="#2f4f4f">
   <thead>
     <tr>
       <th height="10%" width="10%">Nombres</th>
       <th height="10%" width="10%">Apellidos</th>
-      <th height="10%" width="10%">Nombres responsable</th>
-      <th height="10%" width="10%">Apellidos responsable</th>
-      <th height="10%" width="10%">Telefono responsable</th>
-      <th height="10%" width="10%">Direccion</th>
-      <th height="10%" width="10%">Telefono</th>
+      <th height="10%" width="10%">Nombres del responsable</th>
+      <th height="10%" width="10%">Apellidos del responsable</th>
+      <th height="10%" width="10%">Telefono del responsable</th>
+      <th height="10%" width="10%">Direccion del paciente</th>
+      <th height="10%" width="10%">Telefono del paciente</th>
       <th height="10%" width="10%">Edad</th>
       <th height="10%" width="10%">Sexo</th>
+      <th height="10%" width="10%">Estatus</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
+    <% if @pacientes.any? %>
+
     <% @pacientes.each do |paciente| %>
       <tr>
         <td height="10%" width="10%"><%= paciente.nombres %></td>
@@ -32,19 +34,37 @@
         <td height="10%" width="10%"><%= paciente.direccion %></td>
         <td height="10%" width="10%"><%= paciente.telefono %></td>
         <td height="10%" width="10%"><%= paciente.edad %></td>
-        <td height="10%" width="10%"><%= paciente.sexo %></td>
-        <td><%= link_to 'Ver', paciente %></td>
+        <% if paciente.sexo == "M" %>
+        <td height="10%" width="10%">Masculino</td>
+        <%else%>
+        <td height="10%" width="10%">Femenino</td>
+        <%end%>
+        <th height="10%" width="10%"><%= paciente.estatus %></th>   
+        <td  style="padding-left: 47px;"><%= link_to 'Ver', paciente, class:"waves-effect waves-light b"%></td>
         <%# if can? :update, @article %>
-        <td><%= link_to "Modificar", edit_paciente_path(paciente) %></td>
-        <%# end %>        
-        <td><%= link_to 'Eliminar', paciente, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar al paciente?' } %></td>
+        <td><%= link_to "Modificar", edit_paciente_path(paciente), class:"waves-effect waves-light b"%></td>
+        <%# end %>
+        <% if paciente.estatus == "A" %>
+          <td><%= link_to "Eliminar", paciente, method: :delete, data: { confirm: "¿Esta seguro que desea eliminar al paciente #{paciente.nombres} ?" }, class:"waves-effect waves-light b"%></td>
+        <% else %>
+          <td><%= link_to "Reactivar paciente", paciente, method: :delete, data: { confirm: "¿Esta seguro que desea reactivar al paciente #{paciente.nombres} ?" }, class:"waves-effect waves-light b"%></td>
+        <%end%>        
+        
       </tr>
     <% end %>
+
+    <% else %>
+      <tr>
+        <td  colspan="10">  
+            <p> No Existen Pacientes registrados... </p>
+        </td>
+      </tr>
+    <%end%>
   </tbody>
 </table>
 
 <br >
-<%= link_to 'Registrar Nuevo Paciente', new_paciente_path %>
+<%= link_to 'Registrar Nuevo Paciente', new_paciente_path, class:"waves-effect waves-light btn-large b"%>
 
 </div>
 </div>

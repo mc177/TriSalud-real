@@ -1,11 +1,10 @@
-<div class="row center-xs">
+<div class="row center-xs2">
   <div class="col-xs-8 col-md-6">
   <div class="box">
 
 <%= form_with(model: paciente, local: true) do |form| %>
   <% if paciente.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(paciente.errors.count, "error") %> prohibited this paciente from being saved:</h2>
 
       <ul>
       <% paciente.errors.full_messages.each do |message| %>
@@ -65,40 +64,9 @@
     <%= form.label :sexo %>
     <%= form.text_field :sexo, id: :paciente_sexo, class:"form-control"  %>
   </div>
-  <div class="actions ">
-  <%= form.fields_for :user do |f| %>
-    <% sexos = {'Masculino' => 0, 'Femenino' => 1} %>
-      <fieldset>
-        <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :contraseña %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
-
-          </div>
-
-          <div class="field">
-            <%= f.label :confirmar_contraseña %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
-          </div>
-          
-          <% #if not user_signed_in?%>
-            <%= f.hidden_field :rol_id, :value => 2 %>
-          <%#end%>
-
-            <%= f.hidden_field :estatus, :value => "A" %>
-
-          </fieldset> 
-  <%end%>
 
   <div class="actions ">
-    <%= form.submit "Guardar", class:"b waves-effect waves-light btn-large" %>
+    <%= form.submit "Guardar", class:"waves-effect waves-light btn-large b"%>
   </div>
 <% end %>
 </div>

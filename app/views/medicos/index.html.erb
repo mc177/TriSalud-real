@@ -2,9 +2,8 @@
   <div class="col-xs-8 tablas">
   <div class="box">
 
-<p id="notice"><%= notice %></p>
 
-<h1 class="titulolista" >Lista de Médicos</h1>
+<h1 class="titulolista">Lista de Médicos</h1>
 
 <table width="203%" border="1" cellpadding="0" cellspacing="0" bordercolor="#2f4f4f">
   <thead>
@@ -16,31 +15,57 @@
       <th height="10%" width="10%">Telefono</th>
       <th height="10%" width="10%">Edad</th>
       <th height="10%" width="10%">Sexo</th>
+      <th height="10%" width="10%">Estatus</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
+    <% if @medicos.any? %>    
+
     <% @medicos.each do |medico| %>
-      <tr>>
-        <td height="10%" width="10%"><%= medico.especialidad_id %></td>
+      <tr>
+        <td height="10%" width="10%"><%#= medico.especialidad %></td>
         <td height="10%" width="10%"><%= medico.nombres %></td>
         <td height="10%" width="10%"><%= medico.apellidos %></td>
         <td height="10%" width="10%"><%= medico.direccion %></td>
         <td height="10%" width="10%"><%= medico.telefono %></td>
         <td height="10%" width="10%"><%= medico.edad %></td>
-        <td height="10%" width="10%"><%= medico.sexo %></td>
-        <td><%= link_to 'Ver', medico %></td>
-        <td><%= link_to 'Modificar', edit_medico_path(medico) %></td>
-        <td><%= link_to 'Eliminar', medico, method: :delete, data: { confirm: 'Esta Seguro que quiere eliminar al médico?' } %></td>
+        <% if medico.sexo == "M" %>
+        <td height="10%" width="10%">Masculino</td>
+        <%else%>
+        <td height="10%" width="10%">Femenino</td>
+        <%end%>
+        <th height="10%" width="10%"><%= medico.estatus %></th>
+        <td  style="padding-left: 47px;"><%= link_to 'Ver', medico, class:"waves-effect waves-light b"%></td>
+        <%# if can? :update, @article %>
+        <td><%= link_to "Modificar", edit_medico_path(medico), class:"waves-effect waves-light b"%></td>
+        <%# end %>
+        <% if medico.estatus == "A" %>
+          <td><%= link_to "Eliminar", medico, method: :delete, data: { confirm: "¿Esta seguro que desea eliminar al médico #{medico.nombres} ?" }, class:"waves-effect waves-light b"%></td>
+        <% else %>
+          <td><%= link_to "Reactivar médico", medico, method: :delete, data: { confirm: "¿Esta seguro que desea reactivar al médico #{medico.nombres} ?" }, class:"waves-effect waves-light b"%></td>
+        <%end%>        
+        
+        <%#= link_to "Reactivar médico", edit_medico_path(medico), class:"waves-effect waves-light b"%>
       </tr>
+
     <% end %>
+  
+  <% else %>
+      <tr>
+        <td  colspan="10">  
+            <p> No Existen Médicos registrados... </p>
+        </td>
+      </tr>
+    <%end%>
+
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'Registrar Médico', new_medico_path %>
+<%= link_to 'Registrar Médico', new_medico_path, class:" b waves-effect waves-light btn-large" %>
 </div>
 </div>
 </div>

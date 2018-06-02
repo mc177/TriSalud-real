@@ -1,37 +1,26 @@
 <div class="row center-xs">
   <div class="col-xs-8 col-md-6">
   <div class="box">
-<%= form_with(model: plan_quirurgico, local: true, multipart: true) do |form| %>
-<%#= form_for @plan_quirurgico, url: new_plan_quirurgico_path do |form| %>  
-  <% if plan_quirurgico.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(plan_quirurgico.errors.count, "error") %> prohibited this plan_quirurgico from being saved:</h2>
+<%= form_with(model: plan_quirurgico, local: true) do |form| %>
+<%#= form_for @plan_quirurgico, url: new_plan_quirurgico_path do |form| %>
 
-      <ul>
+  <% if plan_quirurgico.errors.any? %>
+    <ul id="error_explanation">
+      <%#= pluralize(plan_quirurgico.errors.count, "error") %> 
+
+      
       <% plan_quirurgico.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+      
+    </ul>
   <% end %>
 
-    <div class="field">
-    <%= form.label :especialidad %>
-    
-    <%=collection_select(:plan_quirurgico, :especialidad, @especialidades, :id, :descripcion, { prompt: 'Por favor seleccione una opción' })%>
-    </div>
-    <div class="field">
-    <%= form.label :médico %>
-    
-    <%=collection_select(:plan_quirurgico, :medico_id, Medico.all.where(especialidad_id: :especialidad), :id, :nombres, { prompt: 'Por favor seleccione una opción' })%>
-    </div>
-    <div class="field">
-    <%= form.label :clínica %>
-    
-    <%=collection_select(:plan_quirurgico, :clinica, MedicoenClinica.all.where(medico_id: :medico_id), :id, :nombres, { prompt: 'Por favor seleccione una opción' })%>
-    </div>    
+  <div class="field">
+    <%= form.label :medico_id %>
+    <%= form.text_field :medico_id, id: :plan_quirurgico_medico_id, class:"form-control" %>
+  </div>
 
-  
   <div class="field">
     <%= form.label :paciente_id %>
     <%= form.text_field :paciente_id, id: :plan_quirurgico_paciente_id,class:"form-control" %>
@@ -39,7 +28,7 @@
 
   <div class="field">
     <%= form.label :fecha_consulta %>
-    <%= form.date_select :fecha_consulta, id: :plan_quirurgico_fecha_consulta, class:"form-control" %>
+    <%= form.date_select :fecha_consulta, id: :plan_quirurgico_fecha_consulta, [:us_month_names] => [t(:jan),t(:feb),t(:mar),t(:apr),t(:may),t(:jun), t(:jul), t(:aug), t(:sep), t(:oct), t(:nov), t(:dec)], class:"form-control" %>
   </div>
 
   <div class="field">
@@ -49,7 +38,7 @@
 
   <div class="field">
     <%= form.label :fecha_del_plan_quirúrgico %>
-    <%= form.date_select :fecha_pq, id: :plan_quirurgico_fecha_pq, class:"form-control" %>
+    <%= form.date_select :fecha_pq, id: :plan_quirurgico_fecha_pq, [:us_month_names] => [t(:jan),t(:feb),t(:mar),t(:apr),t(:may),t(:jun), t(:jul), t(:aug), t(:sep), t(:oct), t(:nov), t(:dec)], class:"form-control" %>
   </div>
 
   <div class="field">
@@ -58,17 +47,10 @@
   </div>
 
   <div class="field">
-    <%= form.label :examen %>
+    <%= form.label :exámen %>
      <%= form.file_field :examen , id: :plan_quirurgico_examen %>
   </div>
-  <div class="field">
-    <label> Servicios</label>
-    <% @servicios.each do |servicio| %>
-      <div class="field">
-        <%= check_box_tag "servicios[]", servicio.id %> <%= servicio.descripcion%>
-      </div>
-    <% end%>
-  </div>
+
 
   <div class="actions">
     <%= form.submit "Guardar", class:"b waves-effect waves-light btn-large" %>
@@ -77,39 +59,3 @@
 </div>
 </div>
 </div>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#plan_quirurgico_especialidad").change(function(){
-      especialidadId = this.value;
-      $.get( "http://localhost:3000/medicos/medicosDeEspecialidad", { id: especialidadId } )
-        .done(function( data ) {
-          var string = "";
-          for (var i = 0; i < data.length; i++) {
-            string = string + '<option value="'+data[i].id+'">'+data[i].nombres+'</option>';
-          }
-          $("#plan_quirurgico_medico_id").html('').append(string);
-          $('#plan_quirurgico_medico_id').material_select();
-        });
-    })
-  })
-  
-
-</script>>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#plan_quirurgico_medico_id").change(function(){
-      medicoId = this.value;
-      $.get( "http://localhost:3000/clinicas/clinicasDeMedico", { id: medicoId } )
-        .done(function( data ) {
-          console.log(data)
-          var string = "";
-          for (var i = 0; i < data.length; i++) {
-            string = string + '<option value="'+data[i].id+'">'+data[i].nombre+'</option>';
-
-          }
-          $("#plan_quirurgico_clinica").html('').append(string);
-          $('#plan_quirurgico_clinica').material_select();
-        });
-    })
-  })
-  </script>>

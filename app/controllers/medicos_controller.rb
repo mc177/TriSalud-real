@@ -4,24 +4,17 @@ class MedicosController < ApplicationController
   # GET /medicos
   # GET /medicos.json
   def index
-    @medicos = Medico.where(:estatus => "A")
+    @medicos = Medico.where(["estatus = 'A' OR estatus = 'I'"])
   end
 
   # GET /medicos/1
   # GET /medicos/1.json
   def show
   end
-  def medicoEspecialidad
-    @medicos = Medico.where(:estatus => "A").where(:especialidad_id => params[:id])
-    render json: @medicos    
-  end
 
   # GET /medicos/new
   def new
     @medico = Medico.new
-    @medico.user = User.new
-    @especialidades = Especialidad.where(:estatus => "A")
-    @clinicas = Clinica.where(:estatus => "A")
   end
 
   # GET /medicos/1/edit
@@ -32,11 +25,10 @@ class MedicosController < ApplicationController
   # POST /medicos.json
   def create
     @medico = Medico.new(medico_params)
-    @medico.clinicas = params[:clinicas]
     @medico.estatus = "A" 
     respond_to do |format|
       if @medico.save
-        format.html { redirect_to @medico, notice: 'El médico fue registrado exitosamente.' }
+        format.html { redirect_to @medico, notice: "El médico ha sido registrado con éxito"}
         format.json { render :show, status: :created, location: @medico }
       else
         format.html { render :new }
@@ -49,12 +41,13 @@ class MedicosController < ApplicationController
   # PATCH/PUT /medicos/1.json
   def update
     respond_to do |format|
+      @medico = Medico.find(params[:id])
       if @medico.update(medico_params)
-        format.html { redirect_to @medico, notice: 'Los datos del médico han sido modificado exitosamente.' }
-        format.json { render :show, status: :ok, location: @medico }
-      else
-        format.html { render :edit }
-        format.json { render json: @medico.errors, status: :unprocessable_entity }
+            format.html { redirect_to @medico, notice: "Los datos del médico #{@medico.nombres} han sido modificados con éxito"}
+            format.json { render :show, status: :ok, location: @medico }
+       else
+            format.html { render :edit }
+            format.json { render json: @medico.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,12 +55,19 @@ class MedicosController < ApplicationController
   # DELETE /medicos/1
   # DELETE /medicos/1.json
   def destroy
+  respond_to do |format|
     @medico = Medico.find(params[:id])
-    @medico.estatus = "I"      
-    @medico.save
-    respond_to do |format|
-      format.html { redirect_to medicos_url, notice: 'El médico ha sido eliminado exitosamente.' }
-      format.json { head :no_content }
+      if @medico.estatus == 'I'
+            @medico.estatus = 'A'
+            @medico.save
+            format.html { redirect_to medicos_url, notice: "El médico #{@medico.nombres} ha sido reactivado con éxito"}
+            format.json { head :no_content }
+        else
+          @medico.estatus = 'I'      
+          @medico.save
+            format.html { redirect_to medicos_url, notice: "El médico #{@medico.nombres} ha sido eliminado con éxito"}
+            format.json { head :no_content }
+      end
     end
   end
 
@@ -79,6 +79,6 @@ class MedicosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def medico_params
-      params.require(:medico).permit(:user_id, :especialidad_id, :nombres, :apellidos, :direccion, :telefono, :edad, :sexo, :estatus, :clinicas, user_attributes: [:email, :password, :password_confirmation, :rol_id])
+      params.require(:medico).permit(:user_id, :especialidad_id, :nombres, :apellidos, :direccion, :telefono, :edad, :sexo, :estatus)
     end
 end

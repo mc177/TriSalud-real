@@ -28,7 +28,7 @@ class HistorialPacientesController < ApplicationController
     @historial_paciente.estatus = "A"
     respond_to do |format|
       if @historial_paciente.save
-        format.html { redirect_to @historial_paciente, notice: 'El Historial del paciente fue registrado exitosamente.' }
+        format.html { redirect_to @historial_paciente}
         format.json { render :show, status: :created, location: @historial_paciente }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class HistorialPacientesController < ApplicationController
   def update
     respond_to do |format|
       if @historial_paciente.update(historial_paciente_params)
-        format.html { redirect_to @historial_paciente, notice: 'Los datos del Historial del paciente han sido modificados exitosamente.' }
+        format.html { redirect_to @historial_paciente}
         format.json { render :show, status: :ok, location: @historial_paciente }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class HistorialPacientesController < ApplicationController
     @historial_paciente.estatus = 'I'      
     @historial_paciente.save
     respond_to do |format|
-      format.html { redirect_to historial_pacientes_url, notice: 'El historial del paciente ha sido eliminado exitosamente.' }
+      format.html { redirect_to historial_pacientes_url}
       format.json { head :no_content }
     end
   end

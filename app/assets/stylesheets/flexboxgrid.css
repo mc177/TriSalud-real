@@ -21,8 +21,7 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;  flex-wrap: wrap;
   margin-right: -0.5rem;
   margin-left: -0.5rem;
 }
@@ -582,7 +581,7 @@
     flex-basis: 50%;
     /*max-width: 50%;*/
     background-color: #399c9c33;
-    margin-top: 110px;
+    margin-top: 70px;
     border-bottom-left-radius: 100px;
     border-top-right-radius: 100px;
     width: 1140px;

@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :rol
-  has_one :paciente
-  has_one :medico
-  has_one :clinica
+  #has_many :pacientes
+  #accepts_nested_attributes_for :pacientes, reject_if: :all_blank, allow_destroy: true
 end

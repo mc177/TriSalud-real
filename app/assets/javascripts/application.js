@@ -16,18 +16,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require materialize
-$(".dropdown-button").dropdown();
-$(document).ready(function() {
-    $('select').material_select();
- });
 
-$('select#plan_quirurgico_especialidad').change(function() {
-  $.ajax({
-     url: '/especialidad_types.json', // you could be fancy and set this in a data attribute.
-     success: function(response) {
-       // update your form with the response from your ajax request
-     }
-  });
-});
 
 

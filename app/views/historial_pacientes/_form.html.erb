@@ -5,8 +5,6 @@
 <%= form_with(model: historial_paciente, local: true) do |form| %>
   <% if historial_paciente.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(historial_paciente.errors.count, "error") %> prohibited this historial_paciente from being saved:</h2>
-
       <ul>
       <% historial_paciente.errors.full_messages.each do |message| %>
         <li><%= message %></li>

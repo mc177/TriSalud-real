@@ -4,7 +4,7 @@ class EspecialidadsController < ApplicationController
   # GET /especialidads
   # GET /especialidads.json
   def index
-    @especialidads = Especialidad.where(:estatus => "A")
+    @especialidads = Especialidad.where(["estatus = 'A' OR estatus = 'I'"])
   end
 
   # GET /especialidads/1
@@ -28,7 +28,7 @@ class EspecialidadsController < ApplicationController
     @especialidad.estatus = "A" 
     respond_to do |format|
       if @especialidad.save
-        format.html { redirect_to @especialidad, notice: 'La especialidad fue registrada exitosamente.' }
+        format.html { redirect_to @especialidad, notice: "La Especialidad ha sido registrada con éxito"}
         format.json { render :show, status: :created, location: @especialidad }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class EspecialidadsController < ApplicationController
   def update
     respond_to do |format|
       if @especialidad.update(especialidad_params)
-        format.html { redirect_to @especialidad, notice: 'Los datos de la especialidad han sido modificados exitosamente' }
+        format.html { redirect_to @especialidad, notice: "Los datos de la especialidad #{@especialidad.descripcion} ha sido modificados con éxito"}
         format.json { render :show, status: :ok, location: @especialidad }
       else
         format.html { render :edit }
@@ -54,12 +54,19 @@ class EspecialidadsController < ApplicationController
   # DELETE /especialidads/1
   # DELETE /especialidads/1.json
   def destroy
-    @especialidad = Especialidad.find(params[:id])
-    @especialidad.estatus = "I"
-      @especialidad.save 
     respond_to do |format|
-      format.html { redirect_to especialidads_url, notice: 'La Especialidad ha sido eliminada exitosamente.' }
-      format.json { head :no_content }
+    @especialidad = Especialidad.find(params[:id])
+      if @especialidad.estatus == 'I'
+            @especialidad.estatus = 'A'
+            @especialidad.save
+            format.html { redirect_to especialidads_url, notice: "La especialidad #{@especialidad.descripcion} ha sido reactivado con éxito"}
+            format.json { head :no_content }
+        else
+          @especialidad.estatus = 'I'      
+          @especialidad.save
+            format.html { redirect_to especialidads_url, notice: "La especialidadpaciente #{@especialidad.descripcion} ha sido eliminado con éxito"}
+            format.json { head :no_content }
+      end
     end
   end
 

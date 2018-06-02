@@ -1,8 +1,6 @@
 <div class="row center-xs">
   <div class="col-xs-8 col-md-6">
   <div class="box">
-<p id="notice"><%= notice %></p>
-
 
 <p>
   <strong>Ced paciente:</strong>
@@ -49,15 +47,24 @@
   <%= @paciente.edad %>
 </p>
 
+<% if @paciente.sexo == "M" %>
 <p>
   <strong>Sexo:</strong>
-  <%= @paciente.sexo %>
+  Masculino
+</p>
+<%else%>
+<p>
+  <strong>Sexo:</strong>
+  Femenino
 </p>
 
+<%end%>
 
 
-<%= link_to 'Editar', edit_paciente_path(@paciente) %> |
-<%= link_to 'Regresar', pacientes_path %>
+
+
+<%= link_to 'Modificar', edit_paciente_path(@paciente), class:"waves-effect waves-light b"%> 
+<%#= link_to 'Consultar pacientes', pacientes_path, class:"waves-effect waves-light b" %>
 </div>
 </div>
 </div>

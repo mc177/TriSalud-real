@@ -5,8 +5,6 @@
 <%= form_with(model: medico, local: true) do |form| %>
   <% if medico.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(medico.errors.count, "error") %> prohibited this medico from being saved:</h2>
-
       <ul>
       <% medico.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -14,15 +12,10 @@
       </ul>
     </div>
   <% end %>
-
-
-
   
-
   <div class="field">
     <%= form.label :especialidad_id %>
-    
-    <%=collection_select(:medico, :especialidad_id, @especialidades, :id, :descripcion, prompt: true)%>
+    <%= form.text_field :especialidad_id, id: :medico_especialidad_id %>
   </div> 
 
  <div class="row">
@@ -30,8 +23,8 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix right2">account_circle</i>
-          <label for="last_name">Nombres: </label>
           <%= form.text_field :nombres, id: :medico_nombres, class:"form-control validate" %>
+          <label for="last_name">Nombres: </label>
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix right2">account_circle</i>
@@ -60,43 +53,13 @@
         </div>
       </div>
       
-      <div class="field">
-    <label> Clinicas</label>
-    <% @clinicas.each do |clinica| %>
-      <div class="field">
-        <%= check_box_tag "clinicas[]", clinica.id %> <%= clinica.nombre%>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix right2">email</i>
+          <label for="email"> Correo Electrónico:</label>
+          <%= form.text_field :user_id, id: :medico_user_id, class:"form-control validate" %>
+        </div>
       </div>
-    <% end%>
-  </div>
-
-
-
-  <%= form.fields_for :user do |f| %>
-    <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :contraseña %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
-
-          </div>
-
-          <div class="field">
-            <%= f.label :confirmar_contraseña %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
-          </div>
-          
-          <% #if not user_signed_in?%>
-            <%= f.hidden_field :rol_id, :value => 3 %>
-          <%#end%>
-
-            <%= f.hidden_field :estatus, :value => "A" %>
-  <%end%>
       <%#<div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix right">vpn_key</i>
@@ -107,7 +70,7 @@
   </div>
 
   <div class="actions">
-   <%= form.submit "Guardar", class:"b waves-effect waves-light btn-large" %>
+   <%= form.submit "Guardar", class:"waves-effect waves-light btn-large b"%>
   </div>
 <% end %>
 </div>

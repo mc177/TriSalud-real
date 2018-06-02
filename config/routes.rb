@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get '/medicos/medicosDeEspecialidad', to: 'medicos#medicoEspecialidad'
-  get '/clinicas/clinicasDeMedico', to: 'clinicas#clinicaMedico'
-  resources :servicios
   resources :historial_pacientes
   resources :plan_quirurgicos
   resources :medicos
@@ -9,8 +6,19 @@ Rails.application.routes.draw do
   resources :especialidads
   resources :pacientes
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
-  root 'bienvenido#index'  
-  resources :rols
+  resources :users, only: [:index, :show]
 
+  devise_scope :user do
+    authenticated :user do
+      root 'bienvenido#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'users/sessions#new', as: :unauthenticated_root
+    end
+  end
+
+  #root 'bienvenido#index'  
+  resources :rols
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

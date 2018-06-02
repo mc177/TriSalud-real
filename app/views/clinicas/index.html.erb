@@ -2,37 +2,53 @@
   <div class="col-xs-8 tablas">
   <div class="box">
 
-<p id="notice"><%= notice %></p>
 
 <h1 class="titulolista">Lista de Clínicas</h1>
 
-<table  width="203%" border="1" cellpadding="0" cellspacing="0" bordercolor="#2f4f4f">
+<table class="striped" width="203%" border="1" cellpadding="0" cellspacing="0" bordercolor="#2f4f4f">
   <thead>
     <tr>
       <th height="10%" width="10%">Rif</th>
       <th height="10%" width="10%">Nombre</th>
       <th height="10%" width="10%">Direccion</th>
+      <th height="10%" width="10%">Estatus</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
+    <% if @clinicas.any? %>
     <% @clinicas.each do |clinica| %>
       <tr>
         <td height="10%" width="10%"><%= clinica.rif %></td>
         <td height="10%" width="10%"><%= clinica.nombre %></td>
         <td height="10%" width="10%"><%= clinica.direccion %></td>
-        <td height="10%" width="10%"><%= link_to 'Ver', clinica %></td>
-        <td height="10%" width="10%"><%= link_to 'Modificar', edit_clinica_path(clinica) %></td>
-        <td height="10%" width="10%"><%= link_to 'Eliminar', clinica, method: :delete, data: { confirm: '¿Está seguro que quiere eliminar la clínica?' } %></td>
-      </tr> 
+        <td height="10%" width="10%"><%= clinica.estatus %></td>
+              <td><%= link_to 'Ver', clinica, class:"waves-effect waves-light b" %></td>
+              <td><%= link_to 'Modificar', edit_clinica_path(clinica), class:"waves-effect waves-light b" %></td>
+              <% if clinica.estatus == "A" %>
+                <td><%= link_to "Eliminar", clinica, method: :delete, data: { confirm: "¿Esta seguro que desea eliminar a la clinica #{clinica.nombre} ?" }, class:"waves-effect waves-light b"%></td>
+              <% else %>
+                <td><%= link_to "Reactivar clinica", clinica, method: :delete, data: { confirm: "¿Esta seguro que desea reactivar a la clínica #{clinica.nombre} ?" }, class:"waves-effect waves-light b"%></td>
+              <%end%>    
+            </tr> 
+   
     <% end %>
+   
+    <%else %>
+
+          <tr>
+            <td colspan="10">  
+                <p> No Existen Clinicas registradas... </p>
+            </td>
+          </tr>
+      <%end%>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'Registrar Nueva Clinica', new_clinica_path %>
+<%= link_to 'Registrar Nueva Clinica', new_clinica_path, class:"waves-effect waves-light btn-large b"%>
 </div>
 </div>
 </div>
