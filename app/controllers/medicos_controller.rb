@@ -11,6 +11,10 @@ class MedicosController < ApplicationController
   # GET /medicos/1.json
   def show
   end
+  def medicoEspecialidad
+    @medicos = Medico.where(:estatus => "A").where(:especialidad_id => params[:id])
+    render json: @medicos    
+  end
 
   # GET /medicos/new
   def new

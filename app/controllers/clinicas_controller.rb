@@ -11,6 +11,15 @@ class ClinicasController < ApplicationController
   # GET /clinicas/1.json
   def show
   end
+  def clinicaMedico
+    @clinicasxmedico = MedicoenClinica.where(:medico_id => params[:id])
+    puts "********************"
+    puts @clinicasxmedico.ids
+     @clinicasxmedico.each do |clinicasmedico|
+      @clinicas = Clinica.where(:estatus => "A").where(:id => clinicasmedico.clinica_id)
+     end  
+    render json: @clinicas   
+  end
 
   # GET /clinicas/new
   def new
